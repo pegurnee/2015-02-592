@@ -26,13 +26,18 @@ public class Stats {
 
 		int[] items = incoming.stream().mapToInt(i -> i).toArray();
 		// new Stats(items).runAll();
-		new Stats(nums3).runAll();
-
+		final Stats stats = new Stats(nums3);
+		stats.runAll();
+		final ResultItem[] results = stats.getResults();
+		for (int j = 0; j < results.length; j++) {
+			System.out.println("results item: " + results[j]);
+		}
 		keyboard.close();
 	}
 
-	private final int[] theNumbers;
+	private boolean started;
 
+	private final int[] theNumbers;
 	private final AbstractWorkerThread[] workers;
 
 	public Stats(int[] theNumbers) {
@@ -45,12 +50,39 @@ public class Stats {
 			this.workers[i] = WorkerThreadFactory.createWorker(enums[i],
 					this.theNumbers);
 		}
+
+		this.started = false;
+	}
+
+	public ResultItem[] getResults() {
+		if (!this.started) {
+			this.runAll();
+
+			return null;
+		}
+
+		try {
+			for (AbstractWorkerThread worker : this.workers) {
+				worker.join();
+			}
+
+			final WorkerType[] enums = WorkerType.values();
+			ResultItem[] toReturn = new ResultItem[enums.length];
+
+			for (int i = 0; i < toReturn.length; i++) {
+				toReturn[i] = ResultsSingleton.getInstance().get(enums[i]);
+			}
+
+			return toReturn;
+		} catch (InterruptedException e) {
+			return null;
+		}
 	}
 
 	public void runAll() {
+		this.started = true;
 		for (AbstractWorkerThread worker : this.workers) {
 			worker.start();
 		}
 	}
-
 }
