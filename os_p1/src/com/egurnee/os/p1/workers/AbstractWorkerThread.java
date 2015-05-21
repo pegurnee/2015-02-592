@@ -1,4 +1,8 @@
-package com.egurnee.os.p1;
+package com.egurnee.os.p1.workers;
+
+import com.egurnee.os.p1.WorkerType;
+import com.egurnee.os.p1.results.ResultItem;
+import com.egurnee.os.p1.results.ResultsSingleton;
 
 public abstract class AbstractWorkerThread extends Thread implements
 WorkerInterface {

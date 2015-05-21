@@ -1,6 +1,9 @@
-package com.egurnee.os.p1;
+package com.egurnee.os.p1.workers;
 
 import java.util.Arrays;
+
+import com.egurnee.os.p1.WorkerType;
+import com.egurnee.os.p1.results.ResultItem;
 
 public class MedianWorkerThread extends AbstractWorkerThread {
 

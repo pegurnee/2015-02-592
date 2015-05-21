@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import com.egurnee.os.p1.results.ResultItem;
+import com.egurnee.os.p1.results.ResultsSingleton;
+import com.egurnee.os.p1.workers.AbstractWorkerThread;
+
 public class Stats {
 	static int[] nums1 = { 1, 2, 3, 3, 5, 34, 6 };
 	static int[] nums2 = { 1, 6, 6, 5, 3, 2, 25, 630 };
