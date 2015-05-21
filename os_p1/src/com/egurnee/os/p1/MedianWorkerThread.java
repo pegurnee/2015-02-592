@@ -10,7 +10,6 @@ public class MedianWorkerThread extends AbstractWorkerThread {
 
 	@Override
 	public ResultItem find() {
-		// TODO Auto-generated method stub
 		int[] nums = Arrays.copyOf(this.numbers, this.numbers.length);
 		Arrays.sort(nums);
 
