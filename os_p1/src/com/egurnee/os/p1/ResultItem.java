@@ -11,7 +11,7 @@ public class ResultItem {
 
 	@Override
 	public String toString() {
-		return "ResultItem [type=" + this.type + ", value=" + this.value + "]";
+		return this.type + ": " + this.value;
 	}
 
 }
