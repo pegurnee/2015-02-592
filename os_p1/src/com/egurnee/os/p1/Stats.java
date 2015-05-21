@@ -25,13 +25,17 @@ public class Stats {
 		}
 
 		int[] items = incoming.stream().mapToInt(i -> i).toArray();
-		// new Stats(items).runAll();
-		final Stats stats = new Stats(nums3);
+		final Stats stats = new Stats(items);
+		// final Stats stats = new Stats(nums3);
+
 		stats.runAll();
+
+		System.out.println("\nStatistics of the list:");
 		final ResultItem[] results = stats.getResults();
 		for (int j = 0; j < results.length; j++) {
-			System.out.println("results item: " + results[j]);
+			System.out.println("    | " + results[j]);
 		}
+
 		keyboard.close();
 	}
 
