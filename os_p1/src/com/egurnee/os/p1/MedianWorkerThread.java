@@ -13,15 +13,14 @@ public class MedianWorkerThread extends AbstractWorkerThread {
 		// TODO Auto-generated method stub
 		int[] nums = Arrays.copyOf(this.numbers, this.numbers.length);
 		Arrays.sort(nums);
-		
-		double median = -1;
-		if (this.numbers.length % 2 == 0) {
+
+		double median;
+		if ((this.numbers.length % 2) == 0) {
 			int middle = this.numbers.length / 2;
-			median = (nums[middle] + nums[middle + 1]) / 2.0;
+			median = (nums[middle - 1] + nums[middle]) / 2.0;
 		} else {
-			median = nums[(this.numbers.length + 1) / 2];
+			median = nums[(this.numbers.length - 1) / 2];
 		}
-		
 		return new ResultItem(this.type, median);
 	}
 

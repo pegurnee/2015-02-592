@@ -20,7 +20,9 @@ public class Stats {
 				incoming.add(keyboard.nextInt());
 			}
 		} catch (InputMismatchException ex) {
-
+			for (Integer i : incoming) {
+				System.out.println("i: " + i);
+			}
 		}
 
 		int[] items = incoming.stream().mapToInt(i -> i).toArray();
@@ -48,6 +50,10 @@ public class Stats {
 	public void runAll() {
 		for (AbstractWorkerThread worker : this.workers) {
 			worker.start();
+		}
+
+		for (Integer i : this.theNumbers) {
+			System.out.println("i: " + i);
 		}
 	}
 
