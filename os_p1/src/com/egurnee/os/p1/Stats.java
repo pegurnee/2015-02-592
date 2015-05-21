@@ -1,15 +1,32 @@
 package com.egurnee.os.p1;
 
+import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 public class Stats {
 	static int[] nums = { 90, 81, 78, 95, 79, 72, 85, 6, 8 };
 
 	public static void main(String[] args) throws InterruptedException {
 		// TODO Auto-generated method stub
-		//System.out.println(new MinimumWorkerThread(nums).find());
+		Scanner keyboard = new Scanner(System.in);
+		ArrayList<Integer> incoming = new ArrayList<>();
 
-		new Stats(nums).runAll();
-		
+		System.out.println("Enter a series of numbers"
+							+ ", anything else to cancel.");
+		try {
+			while (true) {
+				System.out.print("Enter a number: ");
+				incoming.add(keyboard.nextInt());
+			}
+		} catch (InputMismatchException ex) {
 
+		}
+
+		int[] items = incoming.stream().mapToInt(i -> i).toArray();
+		new Stats(items).runAll();
+
+		keyboard.close();
 	}
 
 	private final int[] theNumbers;
@@ -24,7 +41,7 @@ public class Stats {
 
 		for (int i = 0; i < this.workers.length; i++) {
 			this.workers[i] = WorkerThreadFactory.createWorker(enums[i],
-					theNumbers);
+					this.theNumbers);
 		}
 	}
 
