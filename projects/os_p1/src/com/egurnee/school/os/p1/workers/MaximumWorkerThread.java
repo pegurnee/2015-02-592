@@ -1,7 +1,7 @@
-package com.egurnee.os.p1.workers;
+package com.egurnee.school.os.p1.workers;
 
-import com.egurnee.os.p1.WorkerType;
-import com.egurnee.os.p1.results.ResultItem;
+import com.egurnee.school.os.p1.WorkerType;
+import com.egurnee.school.os.p1.results.ResultItem;
 
 public class MaximumWorkerThread extends AbstractWorkerThread {
 

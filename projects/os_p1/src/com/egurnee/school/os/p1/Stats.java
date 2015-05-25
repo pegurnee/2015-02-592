@@ -1,12 +1,12 @@
-package com.egurnee.os.p1;
+package com.egurnee.school.os.p1;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import com.egurnee.os.p1.results.ResultItem;
-import com.egurnee.os.p1.results.ResultsSingleton;
-import com.egurnee.os.p1.workers.AbstractWorkerThread;
+import com.egurnee.school.os.p1.results.ResultItem;
+import com.egurnee.school.os.p1.results.ResultsSingleton;
+import com.egurnee.school.os.p1.workers.AbstractWorkerThread;
 
 public class Stats {
 	static int[] nums1 = { 1, 2, 3, 3, 5, 34, 6 };

@@ -1,8 +1,8 @@
-package com.egurnee.os.p1.results;
+package com.egurnee.school.os.p1.results;
 
 import java.util.EnumMap;
 
-import com.egurnee.os.p1.WorkerType;
+import com.egurnee.school.os.p1.WorkerType;
 
 public final class ResultsSingleton {
 	private static ResultsSingleton instance = new ResultsSingleton();

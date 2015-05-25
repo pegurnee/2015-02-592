@@ -1,6 +1,6 @@
-package com.egurnee.os.p1.results;
+package com.egurnee.school.os.p1.results;
 
-import com.egurnee.os.p1.WorkerType;
+import com.egurnee.school.os.p1.WorkerType;
 
 public class ResultItem {
 	private final WorkerType type;
