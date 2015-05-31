@@ -26,7 +26,7 @@ public class AssemblyLineSegment {
 		this.bufferCount--;
 		Widget toReturn = this.buffer[this.bufferTail];
 		this.bufferTail = (this.bufferTail + 1)
-							% AssemblyLineSegment.BUFFER_SIZE;
+				% AssemblyLineSegment.BUFFER_SIZE;
 
 		this.notify();
 
@@ -45,8 +45,12 @@ public class AssemblyLineSegment {
 		this.bufferCount++;
 		this.buffer[this.bufferHead] = incomingWidget;
 		this.bufferHead = (this.bufferHead + 1)
-							% AssemblyLineSegment.BUFFER_SIZE;
+				% AssemblyLineSegment.BUFFER_SIZE;
 
 		this.notify();
+	}
+
+	public int getBufferCount() {
+		return this.bufferCount;
 	}
 }

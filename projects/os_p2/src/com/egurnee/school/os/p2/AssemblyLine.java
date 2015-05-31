@@ -33,6 +33,22 @@ public class AssemblyLine {
 				this.workers.length - 1);
 	}
 
+	public int[] getCounts() {
+		int[] toReturn = new int[this.segments.length];
+		for (int i = 0; i < this.segments.length; i++) {
+			toReturn[i] = this.segments[i].getBufferCount();
+		}
+		return toReturn;
+	}
+
+	public WorkerStatus[] getStatuses() {
+		WorkerStatus[] toReturn = new WorkerStatus[this.workers.length];
+		for (int i = 0; i < this.workers.length; i++) {
+			toReturn[i] = this.workers[i].getCurrentStatus();
+		}
+		return toReturn;
+	}
+
 	public void runAll() {
 		for (int i = 0; i < this.workers.length; i++) {
 			this.workers[i].start();
