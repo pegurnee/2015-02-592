@@ -33,6 +33,11 @@ public class AssemblyLine {
 				this.workers.length - 1);
 	}
 
+	public void disableWorker(int i) {
+		this.workers[i].disable();
+
+	}
+
 	public int[] getCounts() {
 		int[] toReturn = new int[this.segments.length];
 		for (int i = 0; i < this.segments.length; i++) {

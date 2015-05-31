@@ -13,7 +13,9 @@ public class WorkPanel extends JPanel {
 
 	private static final int WORKER_SIZE = 100;
 	private Color bgcolor;
+	private int numInBuffer;
 	private Type panelType;
+	private WorkerStatus status;
 
 	public WorkPanel(Color bgcolor) {
 		super();
@@ -23,6 +25,7 @@ public class WorkPanel extends JPanel {
 	}
 
 	public void apply(int numWorking) {
+		this.panelType = Type.SEGMENT;
 		switch (numWorking) {
 			case 0:
 				this.bgcolor = Color.WHITE;
@@ -39,9 +42,11 @@ public class WorkPanel extends JPanel {
 			default:
 				break;
 		}
+		this.numInBuffer = numWorking;
 	}
 
 	public void apply(WorkerStatus status) {
+		this.panelType = Type.WORKER;
 		switch (status) {
 			case FINISHED:
 				this.bgcolor = Color.RED;
@@ -55,12 +60,37 @@ public class WorkPanel extends JPanel {
 			default:
 				break;
 		}
+		this.status = status;
 	}
 
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		g.setColor(this.bgcolor);
-		g.fillRect(0, 0, WORKER_SIZE, WORKER_SIZE);
+		if (this.panelType != null) {
+			switch (this.panelType) {
+				case SEGMENT:
+					g.setColor(Color.BLACK);
+					g.drawRect(2, 30, 30, 30);
+					g.drawRect(34, 30, 30, 30);
+					g.drawRect(66, 30, 30, 30);
+					switch (this.numInBuffer) {
+						case 3:
+							g.fillRect(2, 30, 30, 30);
+						case 2:
+							g.fillRect(34, 30, 30, 30);
+						case 1:
+							g.fillRect(66, 30, 30, 30);
+					}
+					break;
+				case WORKER:
+					g.setColor(this.bgcolor);
+					g.fillRect(0, 0, WORKER_SIZE, WORKER_SIZE);
+					g.setColor(Color.BLACK);
+					g.drawString(this.status.getState(), 3, 40);
+					break;
+				default:
+					break;
+			}
+		}
 	}
 };
