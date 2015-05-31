@@ -22,7 +22,14 @@ public class WidgetWorker extends Thread {
 	public void run() {
 		while (this.numberProduced < WidgetWorker.PRODUCTION_LIMIT) {
 			this.handleIncoming();
+			final long millis = (long) (Math.random() * 1000);
+			System.out.println("Worker " + this.location + " waiting for "
+								+ millis + " millis");
+			try {
+				Thread.sleep(millis);
+			} catch (InterruptedException e) {
 
+			}
 			this.handleOutgoing();
 		}
 	}
@@ -33,6 +40,8 @@ public class WidgetWorker extends Thread {
 		} else {
 			this.workingOn = new Widget();
 		}
+		System.out.println("Worker " + this.location + " incoming: "
+							+ this.numberProduced);
 	}
 
 	private void handleOutgoing() {
@@ -40,5 +49,7 @@ public class WidgetWorker extends Thread {
 			this.bOutgoing.enqueue(this.workingOn);
 		}
 		this.numberProduced++;
+		System.out.println("Worker " + this.location + " outgoing: "
+				+ this.numberProduced);
 	}
 }

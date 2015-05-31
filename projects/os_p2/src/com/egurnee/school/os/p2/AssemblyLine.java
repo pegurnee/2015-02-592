@@ -22,9 +22,20 @@ public class AssemblyLine {
 		}
 
 		this.workers = new WidgetWorker[numberOfWorkers];
-		for (int i = 0; i < (this.workers.length - 1); i++) {
-			this.workers[i] = new WidgetWorker(this.segments[i],
-					this.segments[i + 1], i);
+
+		this.workers[0] = new WidgetWorker(null, this.segments[0], 0);
+		for (int i = 1; i < (this.workers.length - 1); i++) {
+			this.workers[i] = new WidgetWorker(this.segments[i - 1],
+					this.segments[i], i);
+		}
+		this.workers[this.workers.length - 1] = new WidgetWorker(
+				this.segments[this.segments.length - 1], null,
+				this.workers.length - 1);
+	}
+
+	public void runAll() {
+		for (int i = 0; i < this.workers.length; i++) {
+			this.workers[i].start();
 		}
 	}
 }

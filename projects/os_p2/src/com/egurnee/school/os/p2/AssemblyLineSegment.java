@@ -3,15 +3,19 @@ package com.egurnee.school.os.p2;
 public class AssemblyLineSegment {
 	private final static int BUFFER_SIZE = 3;
 	private final Widget[] buffer;
-	private int bufferPointer;
+	private int bufferCount;
+	private int bufferHead;
+	private int bufferTail;
 
 	public AssemblyLineSegment() {
 		this.buffer = new Widget[AssemblyLineSegment.BUFFER_SIZE];
-		this.bufferPointer = 0;
+		this.bufferHead = 0;
+		this.bufferTail = 0;
+		this.bufferCount = 0;
 	}
 
 	public synchronized Widget dequeue() {
-		while (this.bufferPointer == 0) {
+		while (this.bufferCount == 0) {
 			try {
 				this.wait();
 			} catch (InterruptedException e) {
@@ -19,7 +23,10 @@ public class AssemblyLineSegment {
 			}
 		}
 
-		Widget toReturn = this.buffer[this.bufferPointer--];
+		this.bufferCount--;
+		Widget toReturn = this.buffer[this.bufferTail];
+		this.bufferTail = (this.bufferTail + 1)
+							% AssemblyLineSegment.BUFFER_SIZE;
 
 		this.notify();
 
@@ -27,7 +34,7 @@ public class AssemblyLineSegment {
 	}
 
 	public synchronized void enqueue(Widget incomingWidget) {
-		while (this.bufferPointer == AssemblyLineSegment.BUFFER_SIZE) {
+		while (this.bufferCount == AssemblyLineSegment.BUFFER_SIZE) {
 			try {
 				this.wait();
 			} catch (InterruptedException e) {
@@ -35,7 +42,10 @@ public class AssemblyLineSegment {
 			}
 		}
 
-		this.buffer[this.bufferPointer++] = incomingWidget;
+		this.bufferCount++;
+		this.buffer[this.bufferHead] = incomingWidget;
+		this.bufferHead = (this.bufferHead + 1)
+							% AssemblyLineSegment.BUFFER_SIZE;
 
 		this.notify();
 	}
