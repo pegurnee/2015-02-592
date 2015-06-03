@@ -52,6 +52,24 @@ public class FCFSScheduler extends Scheduler {
 	   */
 	  System.out.println("evidently there is now a job on readyQ");
   }
+
+	@Override
+	public void add(Job J) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
+	public void remove(Job J) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
+	public boolean hasJobsQueued() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
   
 

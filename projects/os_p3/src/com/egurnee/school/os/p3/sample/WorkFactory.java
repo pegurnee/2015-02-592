@@ -17,5 +17,6 @@ public class WorkFactory {
 		 * Return a new instance of a class that implements JobWorkable.
 		 * You should provide that class.
 		 */
+		return null;
 	}
 }

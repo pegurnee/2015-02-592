@@ -49,9 +49,9 @@ class Submittor extends Thread {
   public void run() {
     // iterate through jobs strings, parse the string, create jobs and add to operating system.
     for (String jobDesc : myJobDescs) {
-    	String id; // ID/name of the Job (simulated process) 
-    	int delay; // msec delay until this Job is submitted to the kernel
-    	String burstDescription;  // The description of that Job.  (For FCFS this will be a single integer token)
+    	String id = null; // ID/name of the Job (simulated process) 
+    	int delay = 0; // msec delay until this Job is submitted to the kernel
+    	String burstDescription = null;  // The description of that Job.  (For FCFS this will be a single integer token)
     	
     	System.out.println("TO_DO Complete Submittor.run()");
     	/*
