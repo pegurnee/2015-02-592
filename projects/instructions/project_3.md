@@ -69,14 +69,14 @@ For example, suppose the input file was:
 (Note that job #1 should finish at around time 200, but job #2 doesn't arrive until time 300.) Then the resulting Gannt chart might look something like (because you are using real-time timers, the numbers may fluctuate slightly):
 
     GANNT CHART:
-    BurstStart  BurstEnd  JOB                 
-         0         1  IDLE                
-         2       211  1                   
-       211       302  IDLE                
-       302       608  2                   
-       609       910  3                   
-       911      1212  4                   
-      1212      1212  FINISHED 
+    BurstStart  BurstEnd  	JOB                 
+             0         1  	IDLE                
+             2       211  	1                   
+           211       302  	IDLE                
+           302       608  	2                   
+           609       910  	3                   
+           911      1212  	4                   
+          1212      1212  	FINISHED 
                        
 ### To Hand In:
 

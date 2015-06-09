@@ -1,26 +1,37 @@
 package com.egurnee.school.os.p3;
 
+import java.util.concurrent.ConcurrentLinkedQueue;
+
 /**
- * <p>Title: FCFSScheduler</p>
- * <p>Description: Component of the simulate operating system that encapsulates FCFS job scheduling.</p>
- * <p>Copyright: Copyright (c) 2015, 2004</p>
- * <p>Company: </p>
+ * <p>
+ * Title: FCFSScheduler
+ * </p>
+ * <p>
+ * Description: Component of the simulate operating system that encapsulates
+ * FCFS job scheduling.
+ * </p>
+ * <p>
+ * Copyright: Copyright (c) 2015, 2004
+ * </p>
+ * <p>
+ * Company:
+ * </p>
+ *
  * @author Matt Evett
  * @version 2.0
  */
 
-
 public class FCFSScheduler extends Scheduler {
 
 	/*
-	 * TO_DO: your data structure to support a FCFS com.egurnee.school.os.p3 and
-	 * the abstract methods of Scheduler
+	 * TO_DO: your data structure to support a FCFS scheduler and the abstract
+	 * methods of Scheduler
 	 */
+	private final ConcurrentLinkedQueue<Job> theJobQueue = new ConcurrentLinkedQueue<Job>();
 
 	@Override
 	public void add(Job J) {
-		// TODO Auto-generated method stub
-
+		this.theJobQueue.add(J);
 	}
 
 	/**
@@ -43,8 +54,7 @@ public class FCFSScheduler extends Scheduler {
 
 	@Override
 	public boolean hasJobsQueued() {
-		// TODO Auto-generated method stub
-		return false;
+		return this.theJobQueue.peek() != null;
 	}
 
 	/**
@@ -55,6 +65,9 @@ public class FCFSScheduler extends Scheduler {
 	 */
 	@Override
 	public boolean makeRun() {
+		if (!this.hasJobsQueued()) {
+			return false;
+		}
 		System.out.println("TO_DO: makeRun not yet implemented");
 
 		/*
@@ -66,7 +79,6 @@ public class FCFSScheduler extends Scheduler {
 
 	@Override
 	public void remove(Job J) {
-		// TODO Auto-generated method stub
-
+		this.theJobQueue.remove(J);
 	}
 }
