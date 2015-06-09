@@ -1,0 +1,114 @@
+Thread[Thread-0,8,main] is blocking until there is a job.
+Thread[Submittor,7,main] adding new process to ready queue.
+evidently there is now a job on readyQ
+I'm on thread: [JOB 1] printing: 0
+I'm on thread: [JOB 1] printing: 1
+I'm on thread: [JOB 1] printing: 2
+I'm on thread: [JOB 1] printing: 3
+I'm on thread: [JOB 1] printing: 4
+I'm on thread: [JOB 1] printing: 5
+I'm on thread: [JOB 1] printing: 6
+I'm on thread: [JOB 1] printing: 7
+I'm on thread: [JOB 1] printing: 8
+I'm on thread: [JOB 1] printing: 9
+I'm on thread: [JOB 1] printing: 10
+I'm on thread: [JOB 1] printing: 11
+I'm on thread: [JOB 1] printing: 12
+I'm on thread: [JOB 1] printing: 13
+I'm on thread: [JOB 1] printing: 14
+I'm on thread: [JOB 1] printing: 15
+I'm on thread: [JOB 1] printing: 16
+Thread[Thread-0,8,main] is blocking until there is a job.
+Thread[Submittor,7,main] adding new process to ready queue.
+evidently there is now a job on readyQ
+I'm on thread: [JOB 2] printing: 0
+I'm on thread: [JOB 2] printing: 1
+I'm on thread: [JOB 2] printing: 2
+I'm on thread: [JOB 2] printing: 3
+I'm on thread: [JOB 2] printing: 4
+I'm on thread: [JOB 2] printing: 5
+I'm on thread: [JOB 2] printing: 6
+I'm on thread: [JOB 2] printing: 7
+I'm on thread: [JOB 2] printing: 8
+I'm on thread: [JOB 2] printing: 9
+I'm on thread: [JOB 2] printing: 10
+I'm on thread: [JOB 2] printing: 11
+I'm on thread: [JOB 2] printing: 12
+I'm on thread: [JOB 2] printing: 13
+I'm on thread: [JOB 2] printing: 14
+I'm on thread: [JOB 2] printing: 15
+I'm on thread: [JOB 2] printing: 16
+I'm on thread: [JOB 2] printing: 17
+I'm on thread: [JOB 2] printing: 18
+I'm on thread: [JOB 2] printing: 19
+I'm on thread: [JOB 2] printing: 20
+I'm on thread: [JOB 2] printing: 21
+I'm on thread: [JOB 2] printing: 22
+I'm on thread: [JOB 2] printing: 23
+I'm on thread: [JOB 2] printing: 24
+I'm on thread: [JOB 2] printing: 25
+I'm on thread: [JOB 2] printing: 26
+Thread[Submittor,7,main] adding new process to ready queue.
+evidently there is now a job on readyQ
+I'm on thread: [JOB 3] printing: 0
+I'm on thread: [JOB 3] printing: 1
+I'm on thread: [JOB 3] printing: 2
+I'm on thread: [JOB 3] printing: 3
+I'm on thread: [JOB 3] printing: 4
+I'm on thread: [JOB 3] printing: 5
+I'm on thread: [JOB 3] printing: 6
+I'm on thread: [JOB 3] printing: 7
+Thread[Submittor,7,main] adding new process to ready queue.
+I'm on thread: [JOB 3] printing: 8
+I'm on thread: [JOB 3] printing: 9
+I'm on thread: [JOB 3] printing: 10
+I'm on thread: [JOB 3] printing: 11
+I'm on thread: [JOB 3] printing: 12
+I'm on thread: [JOB 3] printing: 13
+I'm on thread: [JOB 3] printing: 14
+I'm on thread: [JOB 3] printing: 15
+I'm on thread: [JOB 3] printing: 16
+I'm on thread: [JOB 3] printing: 17
+I'm on thread: [JOB 3] printing: 18
+I'm on thread: [JOB 3] printing: 19
+I'm on thread: [JOB 3] printing: 20
+I'm on thread: [JOB 3] printing: 21
+I'm on thread: [JOB 3] printing: 22
+I'm on thread: [JOB 3] printing: 23
+I'm on thread: [JOB 3] printing: 24
+evidently there is now a job on readyQ
+I'm on thread: [JOB 4] printing: 0
+I'm on thread: [JOB 4] printing: 1
+I'm on thread: [JOB 4] printing: 2
+I'm on thread: [JOB 4] printing: 3
+I'm on thread: [JOB 4] printing: 4
+I'm on thread: [JOB 4] printing: 5
+I'm on thread: [JOB 4] printing: 6
+I'm on thread: [JOB 4] printing: 7
+I'm on thread: [JOB 4] printing: 8
+I'm on thread: [JOB 4] printing: 9
+I'm on thread: [JOB 4] printing: 10
+I'm on thread: [JOB 4] printing: 11
+I'm on thread: [JOB 4] printing: 12
+I'm on thread: [JOB 4] printing: 13
+I'm on thread: [JOB 4] printing: 14
+I'm on thread: [JOB 4] printing: 15
+I'm on thread: [JOB 4] printing: 16
+I'm on thread: [JOB 4] printing: 17
+I'm on thread: [JOB 4] printing: 18
+I'm on thread: [JOB 4] printing: 19
+I'm on thread: [JOB 4] printing: 20
+I'm on thread: [JOB 4] printing: 21
+I'm on thread: [JOB 4] printing: 22
+I'm on thread: [JOB 4] printing: 23
+I'm on thread: [JOB 4] printing: 24
+I'm on thread: [JOB 4] printing: 25
+Gannt Chart:
+    Burst Start   Burst End    JOB        
+              0           3    IDLE       
+              4         207    JOB 1      
+            208         304    IDLE       
+            305         617    JOB 2      
+            618         918    JOB 3      
+            919        1219    JOB 4      
+           1219        1219    FINISHED   
