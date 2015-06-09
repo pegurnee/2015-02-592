@@ -16,7 +16,6 @@ public class WorkFactory {
 	private int jobCount = 0;
 
 	public JobWorkable createWork() {
-		// System.out.println("TO_DO: complete WorkFactory.createWork");
 		this.jobCount++;
 		return new WorkWorkWork();
 	}

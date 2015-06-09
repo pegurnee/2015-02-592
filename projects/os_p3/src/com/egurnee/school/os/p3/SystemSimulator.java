@@ -54,6 +54,8 @@ class SystemSimulator extends Thread {
 	public void AddNewProcess(String name, String burstDescription,
 			JobWorkable workToDo) {
 		Job newJob = new Job(burstDescription, this, name, workToDo);
+		System.out.println(Thread.currentThread()
+				+ " adding new process to ready queue.");
 		this.myScheduler.add(newJob);
 	}
 
@@ -85,7 +87,11 @@ class SystemSimulator extends Thread {
 		 * equal. I've left both here for demonstration purposes--really only
 		 * need one.
 		 */
-
+		if (!terminatingJob.equals(schedulersRunning)) {
+			System.err.println("the world is broken, "
+					+ "also I didn't do everything correctly.");
+			System.exit(ILLEGAL_TERMINATION);
+		}
 		// store job gannt data
 		this.chart.recordEvent(terminatingJob.getStartTime(),
 				System.currentTimeMillis(), terminatingJob.getNameOf());
@@ -100,6 +106,8 @@ class SystemSimulator extends Thread {
 	 * adds given job, j, to the ready set. Invoked by a Submittor. Keep in mind
 	 * that j might not start running immediately, depending on whether another
 	 * job is already running.
+	 *
+	 * EPG: obviously this is from a prior version of the code
 	 */
 
 	public ReentrantLock getSingleThreadMutex() {
@@ -147,7 +155,14 @@ class SystemSimulator extends Thread {
 
 			this.myScheduler.makeRun(); // the next Job should start running but
 			// immediately block on OS mutex lock
-			System.out.println("TO_DO Finish SystemSimulator.run()");
+			// System.out.println("TO_DO Finish SystemSimulator.run()");
+
+			/*
+			 * Provide code that uses the Job's Condition to block the kernel
+			 * simulator thread (i.e., the thread that is executing this code).
+			 * Use the await() method to do this. This will establish the mutex
+			 * for the kernel and the Jobs.
+			 */
 
 			while (this.myScheduler.hasRunningJob()) {
 				try {
@@ -156,12 +171,6 @@ class SystemSimulator extends Thread {
 					e.printStackTrace();
 				}
 			}
-			/*
-			 * Provide code that uses the Job's Condition to block the kernel
-			 * simulator thread (i.e., the thread that is executing this code).
-			 * Use the await() method to do this. This will establish the mutex
-			 * for the kernel and the Jobs.
-			 */
 
 			// Should get to here when that Job completes (calls Exit).
 		} // exit loop, we have no jobs left and none scheduled

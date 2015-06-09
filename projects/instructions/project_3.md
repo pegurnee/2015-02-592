@@ -61,10 +61,10 @@ The output must end with some kind of a Gannt chart that identifies when each jo
 
 For example, suppose the input file was:
 
-1 0 200   
-2 300 300  
-3 300 300  
-4 100 300
+    1   0 200   
+    2 300 300  
+	3 300 300  
+	4 100 300
 
 (Note that job #1 should finish at around time 200, but job #2 doesn't arrive until time 300.) Then the resulting Gannt chart might look something like (because you are using real-time timers, the numbers may fluctuate slightly):
 

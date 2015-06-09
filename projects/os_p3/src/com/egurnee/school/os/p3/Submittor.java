@@ -86,9 +86,9 @@ class Submittor extends Thread {
 			// that Job. (For
 			// FCFS this will be a single
 			// integer token)
-			System.out.println(id + ":\n delay: " + delay + "\t"
-								+ burstDescription);
-			System.out.println("TO_DO Complete Submittor.run()");
+			// System.out.println(id + ":\n delay: " + delay + "\t"
+			// + burstDescription);
+			// System.out.println("TO_DO Complete Submittor.run()");
 			/*
 			 * Provide code that will set id, delay, and burstDescription from
 			 * jobDesc.

@@ -112,10 +112,7 @@ class Job extends Thread {
 
 	@Override
 	public String toString() {
-		return "Job [burstTime=" + this.burstTime + ", myCondition="
-				+ this.myCondition + ", myOS=" + this.myOS + ", name="
-				+ this.name + ", shouldRun=" + this.shouldRun + ", startTime="
-				+ this.startTime + ", work=" + this.work + "]";
+		return "[" + this.name + "]";
 	}
 
 	/*

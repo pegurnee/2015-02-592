@@ -33,8 +33,9 @@ import java.util.Scanner;
 
 public class RunScheduler {
 
-	private final static String INPUT_FILE_NAME = "scheduleInput.txt"; // filename
+	private final static String INPUT_FILE_NAME = "scheduleInput.txt";
 
+	// private final static String INPUT_FILE_NAME = "assets/greek_input.txt";
 	/**
 	 * Copies content of the input file into an array. Each line of input
 	 * becomes one element of the array.
