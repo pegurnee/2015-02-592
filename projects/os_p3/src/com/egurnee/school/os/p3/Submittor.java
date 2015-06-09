@@ -73,10 +73,15 @@ class Submittor extends Thread {
 		// iterate through jobs strings, parse the string, create jobs and add
 		// to operating system.
 		for (String jobDesc : this.myJobDescs) {
-			String id; // ID/name of the Job (simulated process)
-			int delay; // msec delay until this Job is submitted to the
-			// kernel
-			String burstDescription; // The description of that Job. (For
+			StringTokenizer input = new StringTokenizer(jobDesc);
+			String id = input.nextToken(); // ID/name of the Job (simulated
+											// process)
+			int delay = Integer.parseInt(input.nextToken()); // msec delay until
+																// this Job is
+																// submitted to
+																// the kernel
+			String burstDescription = input.nextToken(); // The description of
+															// that Job. (For
 			// FCFS this will be a single
 			// integer token)
 
