@@ -12,15 +12,17 @@ import java.util.ArrayList;
  * <p>
  * Copyright: Copyright (c) 2015, 2004 by Matt Evett
  * </p>
- * 
+ *
  * @author Matt Evett
- * @version 2.0 simulates the com.egurnee.school.os.p3
+ * @version 2.0 simulates the scheduler
+ * @author eddie
+ * @version 2.5 displays the gannt chart
  */
 
 public class GanntChart {
 	/**
 	 * Inner class to record the data of one Gannt chart event
-	 * 
+	 *
 	 * @author matt
 	 *
 	 */
@@ -36,11 +38,26 @@ public class GanntChart {
 		}
 	}
 
+	public static void main(String[] args) {
+		GanntChart test = new GanntChart();
+		test.start();
+		test.recordEvent(System.currentTimeMillis(),
+				System.currentTimeMillis(), "A");
+		test.recordEvent(System.currentTimeMillis(),
+				System.currentTimeMillis(), "B");
+		test.recordEvent(System.currentTimeMillis(),
+				System.currentTimeMillis(), "C");
+		test.end();
+		test.print();
+
+	}
+
 	// to display all timings as relative to this time
 	private final ArrayList<GanntRecord> events = new ArrayList<GanntRecord>();
 
 	private long systemStartTime; // wall time when the Gannt chart starts. Is
-									// used
+
+	// used
 
 	public GanntChart() {
 
@@ -52,7 +69,15 @@ public class GanntChart {
 	}
 
 	public void print() {
-		System.out.println("TO_DO GanntChart.print not yet implemented");
+		System.out.println("Gannt Chart:");
+		System.out.printf("%4s%-11s %11s    %-11s", " ", "Burst Start",
+				"Burst End", "JOB");
+		for (GanntRecord ganntRecord : this.events) {
+			System.out.printf("%n%4s%11s %11s    %-11s", " ",
+					ganntRecord.startTime - this.systemStartTime,
+					ganntRecord.endTime - this.systemStartTime,
+					ganntRecord.eventDescriptor);
+		}
 	}
 
 	public void recordEvent(long startTime, long endTime, String eventDescriptor) {
