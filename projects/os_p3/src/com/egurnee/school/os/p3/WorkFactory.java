@@ -4,7 +4,7 @@ package com.egurnee.school.os.p3;
  * A factory class for generating JobWorkables to be placed in Jobs. You can
  * extend this class and then create a Submittor with an instance of your
  * extended class to create the "work" for Jobs.
- * 
+ *
  * @author matt
  * @version 1.0
  *          <p>
@@ -13,13 +13,11 @@ package com.egurnee.school.os.p3;
  *
  */
 public class WorkFactory {
-	private final int jobCount = 0;
+	private int jobCount = 0;
 
 	public JobWorkable createWork() {
-		System.out.println("TO_DO: complete WorkFactory.createWork");
-		/*
-		 * Return a new instance of a class that implements JobWorkable. You
-		 * should provide that class.
-		 */
+		// System.out.println("TO_DO: complete WorkFactory.createWork");
+		this.jobCount++;
+		return new WorkWorkWork();
 	}
 }
