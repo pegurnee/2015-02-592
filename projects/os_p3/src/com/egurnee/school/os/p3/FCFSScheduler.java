@@ -30,7 +30,8 @@ public class FCFSScheduler extends Scheduler {
 	private final ConcurrentLinkedQueue<Job> theJobQueue = new ConcurrentLinkedQueue<Job>();
 
 	@Override
-	public void add(Job J) {
+	public synchronized void add(Job J) {
+		this.notify();
 		this.theJobQueue.add(J);
 	}
 
@@ -40,15 +41,23 @@ public class FCFSScheduler extends Scheduler {
 	 * to the queue.
 	 */
 	@Override
-	public void blockTilThereIsAJob() {
+	public synchronized void blockTilThereIsAJob() {
 		if (this.hasRunningJob()) {
 			return;
 		}
+
 		System.out.println("TO_DO: blockTilThereIsAJob not yet implemented");
 		/*
 		 * Place code here that will cause the calling thread to block until the
 		 * ready queue contains a Job
 		 */
+		while (!this.hasJobsQueued()) {
+			try {
+				this.wait();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
 		System.out.println("evidently there is now a job on readyQ");
 	}
 
@@ -69,11 +78,14 @@ public class FCFSScheduler extends Scheduler {
 			return false;
 		}
 		System.out.println("TO_DO: makeRun not yet implemented");
-
 		/*
 		 * Place code here that gets the next Job from the ready queue and
 		 * invokes start() on it
 		 */
+		final Job elem = this.theJobQueue.poll();
+		this.currentlyRunningJob = elem;
+		System.out.println(elem);
+		elem.start();
 		return true; // TO_DO ***SHOULDN'T ALWAYS RETURN TRUE***
 	}
 

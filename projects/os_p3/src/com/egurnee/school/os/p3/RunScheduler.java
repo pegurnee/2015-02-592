@@ -62,12 +62,6 @@ public class RunScheduler {
 		SystemSimulator kernel = new SystemSimulator(new FCFSScheduler());
 		ArrayList<String> jobs = new ArrayList<String>();
 
-		// Here you need to parse the input file, scheduleInput.txt, to create
-		// the jobs ArrayList.
-		// For testing purposes, though, I'll just hardwire a three-value list.
-		// The
-		// RunScheduler that you submit should NOT have the following three
-		// lines.
 		getJobsFromFile(jobs);
 
 		WorkFactory sinecure = new WorkFactory();

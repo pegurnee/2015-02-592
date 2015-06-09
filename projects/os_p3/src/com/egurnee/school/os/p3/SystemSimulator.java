@@ -31,6 +31,7 @@ class SystemSimulator extends Thread {
 	private final Scheduler myScheduler; // com.egurnee.school.os.p3 for jobs
 
 	private final ReentrantLock singleThreadMutex; // Used to guarantee that
+
 	// only
 
 	// ...one of either the OS or any Job thread is running at any one time.
@@ -74,7 +75,7 @@ class SystemSimulator extends Thread {
 	 *            = wall time when Job first started running
 	 */
 	public void exit() {
-		// remove job from com.egurnee.school.os.p3, record data into
+		// remove job from scheduler, record data into
 		// gannt chart
 		Job terminatingJob = (Job) Thread.currentThread(); // reference to
 		// calling thread
@@ -136,8 +137,7 @@ class SystemSimulator extends Thread {
 			currentIdleTimeStart = System.currentTimeMillis(); // start idle
 			// timer
 			// If there are no jobs to schedule, block on readyQ, waiting on
-			// Submittor to
-			// signal it.
+			// Submittor to signal it.
 			this.myScheduler.blockTilThereIsAJob();
 			currentIdleTimeEnd = System.currentTimeMillis(); // end idle timer
 			if (currentIdleTimeEnd > currentIdleTimeStart) {
@@ -148,6 +148,14 @@ class SystemSimulator extends Thread {
 			this.myScheduler.makeRun(); // the next Job should start running but
 			// immediately block on OS mutex lock
 			System.out.println("TO_DO Finish SystemSimulator.run()");
+
+			while (this.myScheduler.hasRunningJob()) {
+				try {
+					this.myScheduler.getRunningJob().getMyCondition().await();
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
 			/*
 			 * Provide code that uses the Job's Condition to block the kernel
 			 * simulator thread (i.e., the thread that is executing this code).

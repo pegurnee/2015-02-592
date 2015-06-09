@@ -35,14 +35,13 @@ class Submittor extends Thread {
 	 * @param jobDescriptions
 	 *            = an array of Strings, each a line from the input file. The
 	 *            syntax of this string will vary depending on the type of
-	 *            com.egurnee.school.os.p3 we are implementing. For every type
-	 *            of com.egurnee.school.os.p3 the first token will be the name
-	 *            of a job/process and the second token will be an integer
-	 *            representing the number of msecs before this job should be
-	 *            submitted to the OS. For a FCFS com.egurnee.school.os.p3 the
-	 *            remainder of the string will consist of a single token, an
-	 *            integer equal to the length of the simulated CPU burst in
-	 *            msec.
+	 *            scheduler we are implementing. For every type of scheduler the
+	 *            first token will be the name of a job/process and the second
+	 *            token will be an integer representing the number of msecs
+	 *            before this job should be submitted to the OS. For a FCFS
+	 *            scheduler the remainder of the string will consist of a single
+	 *            token, an integer equal to the length of the simulated CPU
+	 *            burst in msec.
 	 * @param s
 	 *            = The kernel simulator
 	 * @param progenitor
@@ -72,19 +71,23 @@ class Submittor extends Thread {
 	public void run() {
 		// iterate through jobs strings, parse the string, create jobs and add
 		// to operating system.
-		for (String jobDesc : this.myJobDescs) {
-			StringTokenizer input = new StringTokenizer(jobDesc);
-			String id = input.nextToken(); // ID/name of the Job (simulated
-											// process)
-			int delay = Integer.parseInt(input.nextToken()); // msec delay until
-																// this Job is
-																// submitted to
-																// the kernel
-			String burstDescription = input.nextToken(); // The description of
-															// that Job. (For
+		final int limit = this.myJobDescs.size();
+		for (int i = 0; i < limit; i++) {
+			this.st = new StringTokenizer(this.myJobDescs.get(i));
+			String id = "JOB " + this.st.nextToken(); // ID/name of the Job
+			// (simulated
+			// process)
+			int delay = Integer.parseInt(this.st.nextToken()); // msec delay
+			// until
+			// this Job is
+			// submitted to
+			// the kernel
+			String burstDescription = this.st.nextToken(); // The description of
+			// that Job. (For
 			// FCFS this will be a single
 			// integer token)
-
+			System.out.println(id + ":\n delay: " + delay + "\t"
+								+ burstDescription);
 			System.out.println("TO_DO Complete Submittor.run()");
 			/*
 			 * Provide code that will set id, delay, and burstDescription from

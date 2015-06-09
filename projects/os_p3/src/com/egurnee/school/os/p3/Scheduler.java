@@ -10,7 +10,7 @@ package com.egurnee.school.os.p3;
  * <p>
  * Copyright: Copyright (c) 2015, 2004 by Matt Evett
  * </p>
- * 
+ *
  * @author Matt Evett
  * @version 2.0 Manages the scheduling for the OS. You'll need to extend this to
  *          make a concrete class. It should be possible to make various
@@ -22,7 +22,7 @@ public abstract class Scheduler {
 	protected volatile Job currentlyRunningJob; // current job
 
 	/**
-	 * Add new job to readyQ. This should interract with blockTilThereIsAJob
+	 * Add new job to readyQ. This should interact with blockTilThereIsAJob
 	 * appropriately. This method will probably be executed by the Submittor
 	 * thread, while blockTilThereIsAJob will probably be executed by the kernel
 	 * (SystemSimulator) thread.
@@ -52,17 +52,16 @@ public abstract class Scheduler {
 	}
 
 	/**
-	 * @return true if there are any Jobs in the com.egurnee.school.os.p3 (could
-	 *         be running, ready, or waiting on IO [in later version of
-	 *         project])
+	 * @return true if there are any Jobs in the scheduler (could be running,
+	 *         ready, or waiting on IO [in later version of project])
 	 */
 	public synchronized boolean hasJobs() {
 		return this.hasJobsQueued() || this.hasRunningJob();
 	}
 
 	/**
-	 * return true if the com.egurnee.school.os.p3.sample has jobs in any queues
-	 * (ready, or IO queues [in later version of project]
+	 * return true if the scheduler has jobs in any queues (ready, or IO queues
+	 * [in later version of project]
 	 */
 	public abstract boolean hasJobsQueued();
 
