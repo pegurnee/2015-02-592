@@ -1,0 +1,12 @@
+Cronus 200 410
+Oceanus 600 520
+Iapetus 500 470
+Hyperion 0 190
+Crius 500 420
+Coeus 300 400
+Rhea 200 190
+Tethys 300 550
+Theia 300 430
+Phoebe 300 250
+Themis 700 220
+Mnemosyne 800 480

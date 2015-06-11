@@ -1,0 +1,121 @@
+Thread[Thread-1,8,main] blockingTilThere's a job
+Thread[Submittor,7,main] notifying the readyQ
+evidently there is now a job on readyQ
+filler MJW0 is completing its task #0
+filler MJW0 is completing its task #1
+filler MJW0 is completing its task #2
+filler MJW0 is completing its task #3
+filler MJW0 is completing its task #4
+filler MJW0 is completing its task #5
+filler MJW0 is completing its task #6
+filler MJW0 is completing its task #7
+filler MJW0 is completing its task #8
+filler MJW0 is completing its task #9
+filler MJW0 is completing its task #10
+filler MJW0 is completing its task #11
+filler MJW0 is completing its task #12
+filler MJW0 is completing its task #13
+filler MJW0 is completing its task #14
+filler MJW0 is completing its task #15
+filler MJW0 is completing its task #16
+filler MJW0 is completing its task #17
+filler MJW0 is completing its task #18
+Thread[Thread-1,8,main] blockingTilThere's a job
+Thread[Submittor,7,main] notifying the readyQ
+evidently there is now a job on readyQ
+filler MJW1 is completing its task #0
+filler MJW1 is completing its task #1
+filler MJW1 is completing its task #2
+filler MJW1 is completing its task #3
+filler MJW1 is completing its task #4
+filler MJW1 is completing its task #5
+filler MJW1 is completing its task #6
+filler MJW1 is completing its task #7
+filler MJW1 is completing its task #8
+filler MJW1 is completing its task #9
+filler MJW1 is completing its task #10
+filler MJW1 is completing its task #11
+filler MJW1 is completing its task #12
+filler MJW1 is completing its task #13
+filler MJW1 is completing its task #14
+filler MJW1 is completing its task #15
+filler MJW1 is completing its task #16
+filler MJW1 is completing its task #17
+filler MJW1 is completing its task #18
+filler MJW1 is completing its task #19
+filler MJW1 is completing its task #20
+filler MJW1 is completing its task #21
+filler MJW1 is completing its task #22
+filler MJW1 is completing its task #23
+filler MJW1 is completing its task #24
+filler MJW1 is completing its task #25
+filler MJW1 is completing its task #26
+filler MJW1 is completing its task #27
+Thread[Submittor,7,main] notifying the readyQ
+filler MJW2 is completing its task #0
+filler MJW2 is completing its task #1
+filler MJW2 is completing its task #2
+filler MJW2 is completing its task #3
+filler MJW2 is completing its task #4
+filler MJW2 is completing its task #5
+filler MJW2 is completing its task #6
+filler MJW2 is completing its task #7
+filler MJW2 is completing its task #8
+Thread[Submittor,7,main] notifying the readyQ
+filler MJW2 is completing its task #9
+filler MJW2 is completing its task #10
+filler MJW2 is completing its task #11
+filler MJW2 is completing its task #12
+filler MJW2 is completing its task #13
+filler MJW2 is completing its task #14
+filler MJW2 is completing its task #15
+filler MJW2 is completing its task #16
+filler MJW2 is completing its task #17
+filler MJW2 is completing its task #18
+filler MJW2 is completing its task #19
+filler MJW2 is completing its task #20
+filler MJW2 is completing its task #21
+filler MJW2 is completing its task #22
+filler MJW2 is completing its task #23
+filler MJW2 is completing its task #24
+filler MJW2 is completing its task #25
+filler MJW2 is completing its task #26
+filler MJW2 is completing its task #27
+filler MJW3 is completing its task #0
+filler MJW3 is completing its task #1
+filler MJW3 is completing its task #2
+filler MJW3 is completing its task #3
+filler MJW3 is completing its task #4
+filler MJW3 is completing its task #5
+filler MJW3 is completing its task #6
+filler MJW3 is completing its task #7
+filler MJW3 is completing its task #8
+filler MJW3 is completing its task #9
+filler MJW3 is completing its task #10
+filler MJW3 is completing its task #11
+filler MJW3 is completing its task #12
+filler MJW3 is completing its task #13
+filler MJW3 is completing its task #14
+filler MJW3 is completing its task #15
+filler MJW3 is completing its task #16
+filler MJW3 is completing its task #17
+filler MJW3 is completing its task #18
+filler MJW3 is completing its task #19
+filler MJW3 is completing its task #20
+filler MJW3 is completing its task #21
+filler MJW3 is completing its task #22
+filler MJW3 is completing its task #23
+filler MJW3 is completing its task #24
+filler MJW3 is completing its task #25
+filler MJW3 is completing its task #26
+filler MJW3 is completing its task #27
+
+Wall time at start: 1433331711044
+BurstStart  BurstEnd  JOB                 
+         0         1  IDLE                
+         2       211  1                   
+       211       302  IDLE                
+       302       608  2                   
+       609       910  3                   
+       911      1212  4                   
+      1212      1212  FINISHED        
