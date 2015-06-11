@@ -1,6 +1,5 @@
 package com.egurnee.school.os.p4;
 
-
 /**
  * <p>
  * Title: Scheduler
@@ -17,10 +16,12 @@ package com.egurnee.school.os.p4;
  *          make a concrete class. It should be possible to make various
  *          concrete classes that implement different kinds of schedulers (round
  *          robin, etc.)
+ * @author eddie
+ * @version 2.5
  */
 
 public abstract class Scheduler {
-	protected volatile Job currentlyRunningJob; // current job
+	protected volatile Job currentlyRunningJob;
 
 	/**
 	 * Add new job to readyQ. This should interact with blockTilThereIsAJob
@@ -57,7 +58,7 @@ public abstract class Scheduler {
 	 *         ready, or waiting on IO [in later version of project])
 	 */
 	public synchronized boolean hasJobs() {
-		return this.hasJobsQueued() || this.hasRunningJob();
+		return (this.hasJobsQueued() || this.hasRunningJob());
 	}
 
 	/**

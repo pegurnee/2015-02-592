@@ -1,6 +1,5 @@
 package com.egurnee.school.os.p4;
 
-
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -30,6 +29,8 @@ import java.util.Scanner;
  *
  * @author Matt Evett
  * @version 2.0 The main driver for the project.
+ * @author eddie
+ * @version 2.5
  */
 
 public class RunScheduler {
@@ -44,23 +45,21 @@ public class RunScheduler {
 	 * becomes one element of the array.
 	 */
 	public static void getJobsFromFile(ArrayList<String> listOfLines) {
-		Scanner fileIn = null; // (Initialization keeps compiler happy)
-		try { // open file
+		Scanner fileIn = null;
+		try {
 			fileIn = new Scanner(new FileInputStream(INPUT_FILE_NAME));
 		} catch (FileNotFoundException e) {
-			System.out
-					.println("Input file " + INPUT_FILE_NAME + " not found. ");
+			System.out.println("Input file " + INPUT_FILE_NAME + " not"
+					+ " found. ");
 			System.exit(1);
 		}
 		while (fileIn.hasNextLine()) {
-			// iterate through each file line
-			listOfLines.add(fileIn.nextLine()); // Send line to ArrayList
+			listOfLines.add(fileIn.nextLine());
 		}
-		fileIn.close(); // close file
+		fileIn.close();
 	}
 
 	public static void main(String[] args) {
-		// set up for operating system simulator
 		Thread thisThread = Thread.currentThread();
 		thisThread.setPriority(Thread.MAX_PRIORITY);
 		SystemSimulator kernel = new SystemSimulator(new FCFSScheduler());
@@ -71,11 +70,8 @@ public class RunScheduler {
 		WorkFactory sinecure = new WorkFactory();
 		Submittor sub = new Submittor(jobs, kernel, sinecure);
 		kernel.setPriority(8);
-		kernel.start(); // Thread executing this instruction has higher
-		// priority, so will continue to hold cpu
+		kernel.start();
 		sub.setPriority(7);
 		sub.start();
-		// As the driver exits, os has the highest priority, so should get the
-		// cpu....
 	}
 }

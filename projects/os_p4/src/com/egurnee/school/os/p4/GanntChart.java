@@ -1,6 +1,5 @@
 package com.egurnee.school.os.p4;
 
-
 import java.util.ArrayList;
 
 /**
@@ -50,18 +49,13 @@ public class GanntChart {
 				System.currentTimeMillis(), "C");
 		test.end();
 		test.print();
-
 	}
 
-	// to display all timings as relative to this time
-	private final ArrayList<GanntRecord> events = new ArrayList<GanntRecord>();
-
-	private long systemStartTime; // wall time when the Gannt chart starts. Is
-
-	// used
+	private final ArrayList<GanntRecord> events;
+	private long systemStartTime;
 
 	public GanntChart() {
-
+		this.events = new ArrayList<>();
 	}
 
 	public void end() {
@@ -86,7 +80,7 @@ public class GanntChart {
 	}
 
 	public void start() {
-		this.systemStartTime = System.currentTimeMillis(); // set os start time
+		this.systemStartTime = System.currentTimeMillis();
 	}
 
 }

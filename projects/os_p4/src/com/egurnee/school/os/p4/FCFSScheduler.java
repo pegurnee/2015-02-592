@@ -43,13 +43,9 @@ public class FCFSScheduler extends Scheduler {
 			return;
 		}
 
-		/*
-		 * Place code here that will cause the calling thread to block until the
-		 * ready queue contains a Job
-		 */
 		while (!this.hasJobsQueued()) {
 			System.out.println(Thread.currentThread()
-					+ " is blocking until there is a job.");
+								+ " is blocking until there is a job.");
 			try {
 				this.wait();
 			} catch (InterruptedException e) {
@@ -75,16 +71,12 @@ public class FCFSScheduler extends Scheduler {
 		if (!this.hasJobsQueued()) {
 			return false;
 		}
-		// System.out.println("TO_DO: makeRun not yet implemented");
-		/*
-		 * Place code here that gets the next Job from the ready queue and
-		 * invokes start() on it
-		 */
+
 		final Job elem = this.theJobQueue.poll();
 		this.currentlyRunningJob = elem;
-		// System.out.println(elem);
+
 		elem.start();
-		return true; // TO_DO ***SHOULDN'T ALWAYS RETURN TRUE***
+		return true;
 	}
 
 	@Override
