@@ -42,14 +42,17 @@ Submit your code to the drop box, along with a text file containing the console 
 
 ### Hints:
 
-If you decide to use *sleep()* in combination with *interrupt()*, you might want to check out this [short tutorial on interrupts][4].
+See my suggested [path to victory][4]!
+
+If you decide to use *sleep()* in combination with *interrupt()*, you might want to check out this [short tutorial on interrupts][5].
 
 As I mentioned in the previous project, you may want to use Java's `StreamTokenizer` class to parse the lines from the input file. Alternatively, you can use *String.split(" ")* to break each input line into constituent substrings.
 
-[This link is to a document explaining the potential for null reference exceptions resulting from invoking methods on "dead" threads][5].
+[This link is to a document explaining the potential for null reference exceptions resulting from invoking methods on "dead" threads][6].
 
 [1]: http://www.emunix.emich.edu/~evett/OS/Assignments/SchedulerWithIO/scheduleInput.txt
 [2]: http://www.emunix.emich.edu/~evett/OS/Assignments/SchedulerWithIO/scheduleInput.txt
 [3]: http://www.emunix.emich.edu/~evett/OS/Assignments/SchedulerWithIO/InputOutput.html
-[4]: http://www.emunix.emich.edu/~evett/OS/interrupts.html
-[5]: http://www.emunix.emich.edu/~evett/OS/Assignments/SchedulerWithIO/Hint_nullReferences.htm
+[4]: http://www.emunix.emich.edu/~evett/OS/Assignments/SchedulerWithIO/tactics.html
+[5]: http://www.emunix.emich.edu/~evett/OS/interrupts.html
+[6]: http://www.emunix.emich.edu/~evett/OS/Assignments/SchedulerWithIO/Hint_nullReferences.htm
