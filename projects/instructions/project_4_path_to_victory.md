@@ -4,20 +4,20 @@
 ## The path to victory:
 
 1. Modify `Job.java` so that *burstTime* is now *LinkedList&lt;Integer&gt; burstTimes*
-	A. Change the Job constructors so that they take a *LinkedList&lt;Integer&gt;* argument.
-	B. Modify `Submittor.java` to parse the input file for the string of burst durations, creating a *LinkedList&lt;Integer&gt;* of them 
-	C. Modify `SystemSimulator.AddNewProcess()` to take *LinkedList&lt;Integer&gt;* as an argument.
+	1. Change the Job constructors so that they take a *LinkedList&lt;Integer&gt;* argument.
+	2. Modify `Submittor.java` to parse the input file for the string of burst durations, creating a *LinkedList&lt;Integer&gt;* of them 
+	3. Modify `SystemSimulator.AddNewProcess()` to take *LinkedList&lt;Integer&gt;* as an argument.
 2. To `Scheduler.java` add
-	A. **public abstract void startIO();**
-	B. **public abstract void finishIO(Job j);**
-	C. **public abstract boolean hasReadyJobs();** // true if readyQ not empty.  Consider when it is appropriate to use this as opposed to hasJobs, hasJobsQueued.
+	1. **public abstract void startIO();**
+	2. **public abstract void finishIO(Job j);**
+	3. **public abstract boolean hasReadyJobs();** // true if readyQ not empty.  Consider when it is appropriate to use this as opposed to hasJobs, hasJobsQueued.
 3. Modify `FCFSScheduler.java`
-	A. Add a data structure, an “input queue”, such as a **ConcurrentLinkedQueue**, to store the Jobs that are currently blocked on an IO operation.  (Thus every Job is either the one currently running, or is on the ready queue, or this new data structure.)
-	B. Implement the new abstract methods.
-	C. Alter `makeRun()` to accommodate readyQ entries (Jobs) that have already been started, but were re-entered on the readyQ by a *IODevice*.  See `Thread.isAlive()`.
+	1. Add a data structure, an “input queue”, such as a **ConcurrentLinkedQueue**, to store the Jobs that are currently blocked on an IO operation.  (Thus every Job is either the one currently running, or is on the ready queue, or this new data structure.)
+	2. Implement the new abstract methods.
+	3. Alter `makeRun()` to accommodate readyQ entries (Jobs) that have already been started, but were re-entered on the readyQ by a *IODevice*.  See `Thread.isAlive()`.
 4. Create the `IODevice` class. 
-	A. This is a simple Thread class. It will need three instance variables: the Job it is associated with, the # of msec of its IO operation, and a reference either to the kernel or to its Scheduler.
-	B. Its *run()* is basically a sleep for the appropriate # of msec, followed by code that reinserts its Job back into the ready queue, (as well as removing that Job from the “input” queue.) See *Scheduler.finishIO*.
+	1. This is a simple Thread class. It will need three instance variables: the Job it is associated with, the # of msec of its IO operation, and a reference either to the kernel or to its Scheduler.
+	2. Its *run()* is basically a sleep for the appropriate # of msec, followed by code that reinserts its Job back into the ready queue, (as well as removing that Job from the “input” queue.) See *Scheduler.finishIO*.
 5. Alter `SystemSimulator.java` so that its *run()* will continue for so long as either the Submittor has not yet submitted all its Jobs, or there are Jobs in either the ready queue, or in the input queue (i.e. blocked on input).
 
 I recommend structuring Job.run() like this:
