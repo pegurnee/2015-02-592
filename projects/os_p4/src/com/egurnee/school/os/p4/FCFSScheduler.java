@@ -24,12 +24,13 @@ import java.util.concurrent.ConcurrentLinkedQueue;
  */
 
 public class FCFSScheduler extends Scheduler {
-	private final ConcurrentLinkedQueue<Job> theJobQueue = new ConcurrentLinkedQueue<Job>();
+	private final ConcurrentLinkedQueue<Job> theInputQueue = new ConcurrentLinkedQueue<>();
+	private final ConcurrentLinkedQueue<Job> theReadyQueue = new ConcurrentLinkedQueue<>();
 
 	@Override
 	public synchronized void add(Job J) {
 		this.notify();
-		this.theJobQueue.add(J);
+		this.theReadyQueue.add(J);
 	}
 
 	/**
@@ -45,7 +46,7 @@ public class FCFSScheduler extends Scheduler {
 
 		while (!this.hasJobsQueued()) {
 			System.out.println(Thread.currentThread()
-								+ " is blocking until there is a job.");
+					+ " is blocking until there is a job.");
 			try {
 				this.wait();
 			} catch (InterruptedException e) {
@@ -56,8 +57,18 @@ public class FCFSScheduler extends Scheduler {
 	}
 
 	@Override
+	public void finishIO(Job j) {
+		j.getBurstTime();
+	}
+
+	@Override
 	public boolean hasJobsQueued() {
-		return this.theJobQueue.peek() != null;
+		return (this.hasReadyJobs() || (null != this.theInputQueue.peek()));
+	}
+
+	@Override
+	public boolean hasReadyJobs() {
+		return (null != this.theReadyQueue.peek());
 	}
 
 	/**
@@ -72,15 +83,24 @@ public class FCFSScheduler extends Scheduler {
 			return false;
 		}
 
-		final Job elem = this.theJobQueue.poll();
+		final Job elem = this.theReadyQueue.poll();
 		this.currentlyRunningJob = elem;
-
-		elem.start();
+		if (elem.isAlive()) {
+			// TODO
+		} else {
+			elem.start();
+		}
 		return true;
 	}
 
 	@Override
 	public void remove(Job J) {
-		this.theJobQueue.remove(J);
+		this.theReadyQueue.remove(J);
+	}
+
+	@Override
+	public void startIO() {
+		final Job elem = this.theInputQueue.poll();
+		elem.start();
 	}
 }

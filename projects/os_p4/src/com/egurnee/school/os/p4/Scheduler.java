@@ -49,6 +49,8 @@ public abstract class Scheduler {
 		this.currentlyRunningJob = null;
 	}
 
+	public abstract void finishIO(Job j);
+
 	public synchronized Job getRunningJob() {
 		return this.currentlyRunningJob;
 	}
@@ -66,6 +68,8 @@ public abstract class Scheduler {
 	 * [in later version of project]
 	 */
 	public abstract boolean hasJobsQueued();
+
+	public abstract boolean hasReadyJobs();
 
 	/**
 	 * Return true if there is a Job currently running
@@ -87,4 +91,6 @@ public abstract class Scheduler {
 	 * "full" buffer
 	 */
 	public abstract void remove(Job J);
+
+	public abstract void startIO();
 }
