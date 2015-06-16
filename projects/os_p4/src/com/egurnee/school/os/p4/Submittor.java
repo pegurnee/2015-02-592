@@ -69,7 +69,10 @@ class Submittor extends Thread {
 			this.st = new StringTokenizer(this.myJobDescs.get(i));
 			String id = "JOB " + this.st.nextToken();
 			int delay = Integer.parseInt(this.st.nextToken());
-			String burstDescription = this.st.nextToken();
+			ArrayList<Integer> bursts = new ArrayList<Integer>();
+			while (this.st.hasMoreTokens()) {
+				bursts.add(Integer.parseInt(this.st.nextToken()));
+			}
 
 			try {
 				sleep(delay);
@@ -78,7 +81,7 @@ class Submittor extends Thread {
 				e.printStackTrace();
 			}
 
-			this.mySystem.AddNewProcess(id, burstDescription,
+			this.mySystem.AddNewProcess(id, bursts,
 					this.myWorkCreator.createWork());
 		}
 		this.mySystem.noMoreJobsToSubmit();

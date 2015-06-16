@@ -1,5 +1,6 @@
 package com.egurnee.school.os.p4;
 
+import java.util.ArrayList;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
@@ -46,11 +47,11 @@ class SystemSimulator extends Thread {
 		this.singleThreadMutex = null;
 	}
 
-	public void AddNewProcess(String name, String burstDescription,
+	public void AddNewProcess(String name, ArrayList<Integer> bursts,
 			JobWorkable workToDo) {
-		Job newJob = new Job(burstDescription, this, name, workToDo);
+		Job newJob = new Job(bursts, this, name, workToDo);
 		System.out.println(Thread.currentThread()
-				+ " adding new process to ready queue.");
+							+ " adding new process to ready queue.");
 		this.myScheduler.add(newJob);
 	}
 
@@ -71,7 +72,7 @@ class SystemSimulator extends Thread {
 
 		if (!terminatingJob.equals(schedulersRunning)) {
 			System.err.println("the world is broken, "
-					+ "also I didn't do everything correctly.");
+								+ "also I didn't do everything correctly.");
 			System.exit(ILLEGAL_TERMINATION);
 		}
 

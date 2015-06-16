@@ -1,5 +1,6 @@
 package com.egurnee.school.os.p4;
 
+import java.util.ArrayList;
 import java.util.concurrent.locks.Condition;
 
 /**
@@ -29,13 +30,13 @@ import java.util.concurrent.locks.Condition;
 
 class Job extends Thread {
 
-	private final int burstTime;
+	private final ArrayList<Integer> burstTimes;
 	private final Condition myCondition;
 
 	private final SystemSimulator myOS;
 	private final String name;
 
-	private volatile boolean shouldRun = false;
+	private volatile boolean shouldRun;
 	private volatile long startTime;
 	private final JobWorkable work;
 
@@ -44,15 +45,16 @@ class Job extends Thread {
 	 * CPU burst duration. In a later version of this program we'll augment the
 	 * descriptors to allow for a sequence of CPU and IO burst lengths.
 	 */
-	public Job(String burstDescriptor, SystemSimulator s, String name,
+	public Job(ArrayList<Integer> burstTimes, SystemSimulator s, String name,
 			JobWorkable workToDo) {
 		this.myOS = s;
 		this.myCondition = s.getSingleThreadMutex().newCondition();
 
-		this.burstTime = Integer.parseInt(burstDescriptor);
+		this.burstTimes = burstTimes;
 		this.work = workToDo;
 
 		this.name = name;
+		this.shouldRun = false;
 	}
 
 	/**
@@ -77,17 +79,8 @@ class Job extends Thread {
 		this.myOS.getSingleThreadMutex().lock();
 
 		this.startTime = System.currentTimeMillis();
-		while ((System.currentTimeMillis() - this.startTime) < this.burstTime) {
-			this.work.doWork();
-			try {
-				sleep(10);
-			} catch (InterruptedException e) {
-				System.out
-				.println(""
-						+ this.name
-						+ " is interrupted, hopefully only by TimeSlicer");
-				e.printStackTrace();
-			}
+		while (!this.burstTimes.isEmpty()) {
+			this.doCPU();
 		}
 
 		this.exit();
@@ -99,10 +92,26 @@ class Job extends Thread {
 	}
 
 	/**
+	 *
+	 */
+	private void doCPU() {
+		this.work.doWork();
+		try {
+			sleep(10);
+		} catch (InterruptedException e) {
+			System.out
+					.println(""
+								+ this.name
+								+ " is interrupted, hopefully only by TimeSlicer");
+			e.printStackTrace();
+		}
+	}
+
+	/**
 	 * An accessor, returning the CPU burst time of the job.
 	 */
-	protected int getBurstTime() {
-		return (this.burstTime);
+	protected ArrayList<Integer> getBurstTime() {
+		return (this.burstTimes);
 	}
 
 	/**
