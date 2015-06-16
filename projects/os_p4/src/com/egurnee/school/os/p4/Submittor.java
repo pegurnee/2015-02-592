@@ -1,6 +1,7 @@
 package com.egurnee.school.os.p4;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.StringTokenizer;
 
 /**
@@ -69,7 +70,7 @@ class Submittor extends Thread {
 			this.st = new StringTokenizer(this.myJobDescs.get(i));
 			String id = "JOB " + this.st.nextToken();
 			int delay = Integer.parseInt(this.st.nextToken());
-			ArrayList<Integer> bursts = new ArrayList<Integer>();
+			LinkedList<Integer> bursts = new LinkedList<>();
 			while (this.st.hasMoreTokens()) {
 				bursts.add(Integer.parseInt(this.st.nextToken()));
 			}

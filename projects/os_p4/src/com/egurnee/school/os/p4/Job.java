@@ -1,6 +1,6 @@
 package com.egurnee.school.os.p4;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.concurrent.locks.Condition;
 
 /**
@@ -30,7 +30,7 @@ import java.util.concurrent.locks.Condition;
 
 class Job extends Thread {
 
-	private final ArrayList<Integer> burstTimes;
+	private final LinkedList<Integer> burstTimes;
 	private final Condition myCondition;
 
 	private final SystemSimulator myOS;
@@ -45,7 +45,7 @@ class Job extends Thread {
 	 * CPU burst duration. In a later version of this program we'll augment the
 	 * descriptors to allow for a sequence of CPU and IO burst lengths.
 	 */
-	public Job(ArrayList<Integer> burstTimes, SystemSimulator s, String name,
+	public Job(LinkedList<Integer> burstTimes, SystemSimulator s, String name,
 			JobWorkable workToDo) {
 		this.myOS = s;
 		this.myCondition = s.getSingleThreadMutex().newCondition();
@@ -78,8 +78,10 @@ class Job extends Thread {
 	public void run() {
 		this.myOS.getSingleThreadMutex().lock();
 
-		this.startTime = System.currentTimeMillis();
+		// this.startTime = System.currentTimeMillis();
+		this.doCPU();
 		while (!this.burstTimes.isEmpty()) {
+			this.doIO();
 			this.doCPU();
 		}
 
@@ -95,22 +97,29 @@ class Job extends Thread {
 	 *
 	 */
 	private void doCPU() {
+		this.burstTimes.removeFirst();
+
 		this.work.doWork();
 		try {
 			sleep(10);
 		} catch (InterruptedException e) {
 			System.out
-					.println(""
-								+ this.name
-								+ " is interrupted, hopefully only by TimeSlicer");
+			.println(""
+					+ this.name
+					+ " is interrupted, hopefully only by TimeSlicer");
 			e.printStackTrace();
 		}
+	}
+
+	private void doIO() {
+		this.myOS.doIO(this.burstTimes.removeFirst());
+
 	}
 
 	/**
 	 * An accessor, returning the CPU burst time of the job.
 	 */
-	protected ArrayList<Integer> getBurstTime() {
+	protected LinkedList<Integer> getBurstTime() {
 		return (this.burstTimes);
 	}
 
