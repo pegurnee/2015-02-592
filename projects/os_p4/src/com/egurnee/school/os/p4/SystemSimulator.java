@@ -51,8 +51,12 @@ class SystemSimulator extends Thread {
 			JobWorkable workToDo) {
 		Job newJob = new Job(bursts, this, name, workToDo);
 		System.out.println(Thread.currentThread()
-							+ " adding new process to ready queue.");
+				+ " adding new process to ready queue.");
 		this.myScheduler.add(newJob);
+	}
+
+	public void doIO(int msec) {
+
 	}
 
 	/**
@@ -72,7 +76,7 @@ class SystemSimulator extends Thread {
 
 		if (!terminatingJob.equals(schedulersRunning)) {
 			System.err.println("the world is broken, "
-								+ "also I didn't do everything correctly.");
+					+ "also I didn't do everything correctly.");
 			System.exit(ILLEGAL_TERMINATION);
 		}
 
