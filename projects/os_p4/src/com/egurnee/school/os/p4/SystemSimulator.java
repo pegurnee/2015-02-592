@@ -50,13 +50,20 @@ class SystemSimulator extends Thread {
 	public void AddNewProcess(String name, LinkedList<Integer> bursts,
 			JobWorkable workToDo) {
 		Job newJob = new Job(bursts, this, name, workToDo);
-		System.out.println(Thread.currentThread()
-							+ " adding new process to ready queue.");
 		this.myScheduler.add(newJob);
 	}
 
 	public void doIO(int msec) {
-
+		// try {
+		// this.myScheduler.currentlyRunningJob.wait();
+		// } catch (InterruptedException e) {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// }
+		// this.myScheduler.currentlyRunningJob.getMyCondition().signal();
+		// this.myScheduler.startIO();
+		new IODevice(this.myScheduler.currentlyRunningJob, msec,
+				this.myScheduler, this).start();
 	}
 
 	/**
@@ -83,7 +90,7 @@ class SystemSimulator extends Thread {
 		this.chart.recordEvent(terminatingJob.getStartTime(),
 				System.currentTimeMillis(), terminatingJob.getNameOf());
 		this.myScheduler.clearRunningJob();
-		terminatingJob.getMyCondition().signal();
+		terminatingJob.getMyCondition().signalAll();
 		this.singleThreadMutex.unlock();
 	}
 

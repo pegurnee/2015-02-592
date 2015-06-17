@@ -97,23 +97,49 @@ class Job extends Thread {
 	 *
 	 */
 	private void doCPU() {
-		this.burstTimes.removeFirst();
 
-		this.work.doWork();
-		try {
-			sleep(10);
-		} catch (InterruptedException e) {
-			System.out
-			.println(""
-					+ this.name
-					+ " is interrupted, hopefully only by TimeSlicer");
-			e.printStackTrace();
+		// this.myOS.getSingleThreadMutex().lock();
+		this.startTime = System.currentTimeMillis();
+		int currentBurstLimit = this.burstTimes.removeFirst();
+
+		while ((System.currentTimeMillis() - this.startTime) < currentBurstLimit) {
+			this.work.doWork();
+			try {
+				sleep(10);
+			} catch (InterruptedException e) {
+				System.out
+						.println(""
+									+ this.name
+									+ " is interrupted, hopefully only by TimeSlicer");
+				e.printStackTrace();
+			}
 		}
+		System.out.println(Thread.currentThread());
+
+		// this.myOS.getSingleThreadMutex().unlock();
+
+		// try {
+		// this.wait();
+		// } catch (InterruptedException e) {
+		// e.printStackTrace();
+		// }
 	}
 
-	private void doIO() {
-		this.myOS.doIO(this.burstTimes.removeFirst());
+	private synchronized void doIO() {
+		// this.myCondition.signal();
+		// this.myOS.getSingleThreadMutex().unlock();
+		// new IODevice(this, this.burstTimes.removeFirst(), this.myOS);
+		final int ioTime = this.burstTimes.removeFirst();
+		this.myOS.doIO(ioTime);
 
+		// this.myOS.getSingleThreadMutex().lock();
+		try {
+			System.out.println("here");
+			this.myCondition.await();
+			System.out.println("and here");
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**

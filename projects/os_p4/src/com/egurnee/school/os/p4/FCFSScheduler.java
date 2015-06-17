@@ -29,6 +29,8 @@ public class FCFSScheduler extends Scheduler {
 
 	@Override
 	public synchronized void add(Job J) {
+		System.out.println(Thread.currentThread()
+							+ " adding process to ready queue.");
 		this.notify();
 		this.theReadyQueue.add(J);
 	}
@@ -46,7 +48,7 @@ public class FCFSScheduler extends Scheduler {
 
 		while (!this.hasJobsQueued()) {
 			System.out.println(Thread.currentThread()
-					+ " is blocking until there is a job.");
+								+ " is blocking until there is a job.");
 			try {
 				this.wait();
 			} catch (InterruptedException e) {
@@ -57,8 +59,13 @@ public class FCFSScheduler extends Scheduler {
 	}
 
 	@Override
-	public void finishIO(Job j) {
-		j.getBurstTime();
+	public synchronized void finishIO(Job j) {
+		// this.clearRunningJob();
+		// this.notify();
+
+		j.getMyCondition().signal();
+		this.theReadyQueue.add(j);
+		// j.shouldRun();
 	}
 
 	@Override
@@ -83,12 +90,28 @@ public class FCFSScheduler extends Scheduler {
 			return false;
 		}
 
-		final Job elem = this.theReadyQueue.poll();
-		this.currentlyRunningJob = elem;
-		if (elem.isAlive()) {
-			// TODO
+		if (!this.theReadyQueue.isEmpty()) {
+			final Job elem = this.theReadyQueue.poll();
+			this.currentlyRunningJob = elem;
+			if (elem.getState() != Thread.State.TERMINATED) {
+				if (elem.isAlive()) {
+					// TODO
+					try {
+						elem.getMyCondition().await();
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				} else {
+					elem.start();
+					// try {
+					// elem.getMyCondition().await();
+					// } catch (InterruptedException e) {
+					// e.printStackTrace();
+					// }
+				}
+			}
 		} else {
-			elem.start();
+			this.theInputQueue.poll().getMyCondition().signal();
 		}
 		return true;
 	}
@@ -102,5 +125,6 @@ public class FCFSScheduler extends Scheduler {
 	public void startIO() {
 		final Job elem = this.theInputQueue.poll();
 		elem.start();
+		this.currentlyRunningJob = elem;
 	}
 }
