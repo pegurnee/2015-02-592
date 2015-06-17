@@ -1,27 +1,8 @@
-package com.egurnee.school.os.p4;
+package com.egurnee.school.os.p4.core;
 
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-/**
- * <p>
- * Title: FCFSScheduler
- * </p>
- * <p>
- * Description: Component of the simulate operating system that encapsulates
- * FCFS job scheduling.
- * </p>
- * <p>
- * Copyright: Copyright (c) 2015, 2004
- * </p>
- * <p>
- * Company:
- * </p>
- *
- * @author Matt Evett
- * @version 2.0
- * @author eddie
- * @version 2.5
- */
+import com.egurnee.school.os.p4.work.Job;
 
 public class FCFSScheduler extends Scheduler {
 	private final ConcurrentLinkedQueue<Job> theInputQueue = new ConcurrentLinkedQueue<>();
@@ -30,16 +11,11 @@ public class FCFSScheduler extends Scheduler {
 	@Override
 	public synchronized void add(Job J) {
 		System.out.println(Thread.currentThread()
-							+ " adding process to ready queue.");
+				+ " adding process to ready queue.");
 		this.notify();
 		this.theReadyQueue.add(J);
 	}
 
-	/**
-	 * blockTilThereIsAJob() Invoked by OS simulator when it wants to get a new
-	 * Job to run. Will block if the ready queue is empty until a Job is added
-	 * to the queue.
-	 */
 	@Override
 	public synchronized void blockTilThereIsAJob() {
 		if (this.hasRunningJob()) {
@@ -48,7 +24,7 @@ public class FCFSScheduler extends Scheduler {
 
 		while (!this.hasJobsQueued()) {
 			System.out.println(Thread.currentThread()
-								+ " is blocking until there is a job.");
+					+ " is blocking until there is a job.");
 			try {
 				this.wait();
 			} catch (InterruptedException e) {
@@ -78,12 +54,6 @@ public class FCFSScheduler extends Scheduler {
 		return (null != this.theReadyQueue.peek());
 	}
 
-	/**
-	 * If the ready queue is empty, return false. Otherwise, start the next job
-	 * in the queue, returning true. If the queue is empty return false. Make
-	 * the next job in the ready queue run. You should probably invoke
-	 * Thread.start() on it.
-	 */
 	@Override
 	public boolean makeRun() {
 		if (!this.hasJobsQueued()) {

@@ -1,29 +1,13 @@
-package com.egurnee.school.os.p4;
+package com.egurnee.school.os.p4.core;
 
 import java.util.LinkedList;
 import java.util.concurrent.locks.ReentrantLock;
 
-/**
- * <p>
- * Title: SystemSimulator
- * </p>
- * <p>
- * Description:
- * </p>
- * <p>
- * Copyright: Copyright (c) 2015, 2004 by Matt Evett
- * </p>
- * <p>
- * Company:
- * </p>
- *
- * @author Matt Evett
- * @version 2.0 extends Thread: this class simulates the kernel.
- * @author eddie
- * @version 2.5
- */
+import com.egurnee.school.os.p4.io.GanntChart;
+import com.egurnee.school.os.p4.work.Job;
+import com.egurnee.school.os.p4.work.JobWorkable;
 
-class SystemSimulator extends Thread {
+public class SystemSimulator extends Thread {
 	private static final int ILLEGAL_TERMINATION = -20;
 
 	private final GanntChart chart = new GanntChart();
@@ -37,10 +21,6 @@ class SystemSimulator extends Thread {
 		this.myScheduler = s;
 	}
 
-	/**
-	 * SystemSimulator() constructor is private to force the use of other
-	 * constructors.
-	 */
 	@SuppressWarnings("unused")
 	private SystemSimulator() {
 		this.myScheduler = null;
@@ -66,17 +46,6 @@ class SystemSimulator extends Thread {
 				this.myScheduler, this).start();
 	}
 
-	/**
-	 * Exit() called by a Job thread to indicate that it is terminating. This
-	 * should be the last instruction executed by a Job's run method. This
-	 * method is meant to mimic a true system call to exit(). Note that because
-	 * this method will be invoked by Job, a Thread, we can use the
-	 * Thread.getCurrentThread() method to get a reference to the Job that is
-	 * invoking this method.
-	 *
-	 * @param jobStart
-	 *            = wall time when Job first started running
-	 */
 	public void exit() {
 		Job terminatingJob = (Job) Thread.currentThread();
 		Job schedulersRunning = this.myScheduler.getRunningJob();
@@ -98,20 +67,10 @@ class SystemSimulator extends Thread {
 		return this.singleThreadMutex;
 	}
 
-	/**
-	 * public noMoreJobsToSubmit() called by the Submittor when the last Job has
-	 * been submitted. The simulator should use this information to eventually
-	 * terminate when all Jobs have finished.
-	 */
 	public void noMoreJobsToSubmit() {
 		this.jobsRemainToBeSubmitted = false;
 	}
 
-	/**
-	 * The basic structure of this method is straightforward: the simulator sits
-	 * in a loop, sleeping. The simulator awakens only when it is interrupted
-	 * ("poked").
-	 */
 	@Override
 	public void run() {
 		long currentIdleTimeStart;

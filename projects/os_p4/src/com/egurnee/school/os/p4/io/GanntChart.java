@@ -1,31 +1,9 @@
-package com.egurnee.school.os.p4;
+package com.egurnee.school.os.p4.io;
 
 import java.util.ArrayList;
 
-/**
- * <p>
- * Title: GanntChart
- * </p>
- * <p>
- * Description: Maintain data necessary to render a Gannt chart.
- * </p>
- * <p>
- * Copyright: Copyright (c) 2015, 2004 by Matt Evett
- * </p>
- *
- * @author Matt Evett
- * @version 2.0 simulates the scheduler
- * @author eddie
- * @version 2.5 displays the gannt chart
- */
-
 public class GanntChart {
-	/**
-	 * Inner class to record the data of one Gannt chart event
-	 *
-	 * @author matt
-	 *
-	 */
+
 	private class GanntRecord {
 		long endTime;
 		String eventDescriptor;
@@ -43,10 +21,19 @@ public class GanntChart {
 		test.start();
 		test.recordEvent(System.currentTimeMillis(),
 				System.currentTimeMillis(), "A");
+		for (int i = 0; i < 1_000_000; i++) {
+			i++;
+		}
 		test.recordEvent(System.currentTimeMillis(),
 				System.currentTimeMillis(), "B");
+		for (int i = 0; i < 100_000_000; i++) {
+			i++;
+		}
 		test.recordEvent(System.currentTimeMillis(),
 				System.currentTimeMillis(), "C");
+		for (int i = 0; i < 1_000_000_000; i++) {
+			i++;
+		}
 		test.end();
 		test.print();
 	}
