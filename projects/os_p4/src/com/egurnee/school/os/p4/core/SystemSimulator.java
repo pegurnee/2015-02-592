@@ -42,25 +42,19 @@ public class SystemSimulator extends Thread {
 		// }
 		// this.myScheduler.currentlyRunningJob.getMyCondition().signal();
 		// this.myScheduler.startIO();
-		final IODevice ioDevice = new IODevice(
-				this.myScheduler.getRunningJob(), msec, this.myScheduler, this);
+		final IODevice ioDevice = new IODevice((Job) Thread.currentThread(),
+				msec, this.myScheduler, this);
+		// this.myScheduler.startIO();
 		this.myScheduler.clearRunningJob();
+		this.myScheduler.startIO();
 		ioDevice.start();
-		System.out.println("ha");
+
+		// this.myScheduler.finishIO(this.myScheduler.getRunningJob());
+		// this.singleThreadMutex.unlock();
 	}
 
 	public void exit() {
-		Job terminatingJob = (Job) Thread.currentThread();
-		Job schedulersRunning = this.myScheduler.getRunningJob();
-
-		if (!terminatingJob.equals(schedulersRunning)) {
-			System.err.println("the world is broken, "
-					+ "also I didn't do everything correctly.");
-			System.exit(ILLEGAL_TERMINATION);
-		}
-
-		this.chart.recordEvent(terminatingJob.getStartTime(),
-				System.currentTimeMillis(), terminatingJob.getNameOf());
+		this.recordRunTime();
 
 		this.myScheduler.clearRunningJob();
 		// this.singleThreadMutex.unlock();
@@ -72,6 +66,24 @@ public class SystemSimulator extends Thread {
 
 	public void noMoreJobsToSubmit() {
 		this.jobsRemainToBeSubmitted = false;
+	}
+
+	/**
+	 *
+	 */
+	public void recordRunTime() {
+		Job terminatingJob = (Job) Thread.currentThread();
+		Job schedulersRunning = this.myScheduler.getRunningJob();
+
+		if (!terminatingJob.equals(schedulersRunning)) {
+			System.err.println("the world is broken, "
+					+ "also I didn't do everything correctly.");
+			System.out.println(terminatingJob + "\n" + schedulersRunning);
+			System.exit(ILLEGAL_TERMINATION);
+		}
+
+		this.chart.recordEvent(terminatingJob.getStartTime(),
+				System.currentTimeMillis(), terminatingJob.getNameOf());
 	}
 
 	@Override

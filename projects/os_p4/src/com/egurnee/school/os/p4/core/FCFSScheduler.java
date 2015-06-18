@@ -37,11 +37,12 @@ public class FCFSScheduler extends Scheduler {
 	@Override
 	public synchronized void finishIO(Job j) {
 		this.theInputQueue.remove(j);
-		this.add(j);
-		this.clearRunningJob();
-		// this.notify();
+		if (!j.getBurstTime().isEmpty()) {
+			this.add(j);
+			// this.clearRunningJob();
+			// this.notify();
+		}
 
-		// j.getMyCondition().signal();
 		// this.theReadyQueue.add(j);
 		// j.shouldRun();
 	}
@@ -78,7 +79,9 @@ public class FCFSScheduler extends Scheduler {
 				}
 			}
 		} else {
-			this.theInputQueue.poll().getMyCondition().signal();
+			final Job elem = this.theInputQueue.poll();
+			this.currentlyRunningJob = elem;
+			elem.getMyCondition().signal();
 		}
 		return true;
 	}
@@ -89,9 +92,9 @@ public class FCFSScheduler extends Scheduler {
 	}
 
 	@Override
-	public void startIO() {
-		this.theInputQueue.add(this.currentlyRunningJob);
-		if (this.hasRunningJob()) {
-		}
+	public synchronized void startIO() {
+		final Job theCurrentJob = this.currentlyRunningJob;
+		this.theInputQueue.add((Job) Thread.currentThread());
+		// this.clearRunningJob();
 	}
 }

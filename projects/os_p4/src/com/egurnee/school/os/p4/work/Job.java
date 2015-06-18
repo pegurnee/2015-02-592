@@ -90,9 +90,9 @@ public class Job extends Thread {
 				sleep(10);
 			} catch (InterruptedException e) {
 				System.out
-						.println(""
-									+ this.name
-									+ " is interrupted, hopefully only by TimeSlicer");
+				.println(""
+						+ this.name
+						+ " is interrupted, hopefully only by TimeSlicer");
 				e.printStackTrace();
 			}
 		}
@@ -104,6 +104,7 @@ public class Job extends Thread {
 	}
 
 	private synchronized void doIO() {
+		this.myOS.recordRunTime();
 		this.getMyCondition().signal();
 		// this.myCondition.signal();
 		// this.myOS.getSingleThreadMutex().unlock();

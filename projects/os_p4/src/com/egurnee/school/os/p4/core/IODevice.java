@@ -20,7 +20,8 @@ public class IODevice extends Thread {
 	public void run() {
 		// this.kernel.getSingleThreadMutex().lock();
 		// this.scheduler.startIO();
-		this.scheduler.startIO();
+		// this.scheduler.startIO();
+		// this.scheduler.clearRunningJob();
 		try {
 			System.out.println("Start IO" + this);
 			sleep(this.numberOfMsecs);
