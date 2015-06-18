@@ -11,7 +11,7 @@ public class FCFSScheduler extends Scheduler {
 	@Override
 	public synchronized void add(Job J) {
 		System.out.println(Thread.currentThread()
-				+ " adding process to ready queue.");
+							+ " adding process to ready queue.");
 		this.notify();
 		this.theReadyQueue.add(J);
 	}
@@ -22,9 +22,9 @@ public class FCFSScheduler extends Scheduler {
 			return;
 		}
 
-		while (!this.hasJobsQueued()) {
+		while (!this.hasReadyJobs()) {
 			System.out.println(Thread.currentThread()
-					+ " is blocking until there is a job.");
+								+ " is blocking until there is a job.");
 			try {
 				this.wait();
 			} catch (InterruptedException e) {
@@ -79,9 +79,10 @@ public class FCFSScheduler extends Scheduler {
 				}
 			}
 		} else {
-			final Job elem = this.theInputQueue.poll();
-			this.currentlyRunningJob = elem;
-			elem.getMyCondition().signal();
+			return false;
+			// final Job elem = this.theInputQueue.poll();
+			// this.currentlyRunningJob = elem;
+			// elem.getMyCondition().signal();
 		}
 		return true;
 	}

@@ -1,0 +1,141 @@
+Thread[Thread-0,8,main] is blocking until there is a job.
+Thread[Submittor,7,main] adding process to ready queue.
+evidently there is now a job on readyQ
+I'm on thread: [JOB 1] printing: 0
+I'm on thread: [JOB 1] printing: 1
+I'm on thread: [JOB 1] printing: 2
+I'm on thread: [JOB 1] printing: 3
+I'm on thread: [JOB 1] printing: 4
+I'm on thread: [JOB 1] printing: 5
+I'm on thread: [JOB 1] printing: 6
+Thread[Submittor,7,main] adding process to ready queue.
+I'm on thread: [JOB 1] printing: 7
+I'm on thread: [JOB 1] printing: 8
+I'm on thread: [JOB 1] printing: 9
+I'm on thread: [JOB 1] printing: 10
+I'm on thread: [JOB 1] printing: 11
+I'm on thread: [JOB 1] printing: 12
+I'm on thread: [JOB 1] printing: 13
+I'm on thread: [JOB 1] printing: 14
+I'm on thread: [JOB 1] printing: 15
+Start IOThread[Thread-3,7,main]
+evidently there is now a job on readyQ
+I'm on thread: [JOB 2] printing: 0
+I'm on thread: [JOB 2] printing: 1
+I'm on thread: [JOB 2] printing: 2
+I'm on thread: [JOB 2] printing: 3
+I'm on thread: [JOB 2] printing: 4
+I'm on thread: [JOB 2] printing: 5
+I'm on thread: [JOB 2] printing: 6
+I'm on thread: [JOB 2] printing: 7
+I'm on thread: [JOB 2] printing: 8
+I'm on thread: [JOB 2] printing: 9
+I'm on thread: [JOB 2] printing: 10
+I'm on thread: [JOB 2] printing: 11
+I'm on thread: [JOB 2] printing: 12
+Thread[Submittor,7,main] adding process to ready queue.
+evidently there is now a job on readyQ
+Start IOThread[Thread-5,7,main]
+I'm on thread: [JOB 3] printing: 0
+I'm on thread: [JOB 3] printing: 1
+I'm on thread: [JOB 3] printing: 2
+End IOThread[Thread-3,7,main]
+Thread[Thread-3,7,main] adding process to ready queue.
+I'm on thread: [JOB 3] printing: 3
+I'm on thread: [JOB 3] printing: 4
+I'm on thread: [JOB 3] printing: 5
+I'm on thread: [JOB 3] printing: 6
+I'm on thread: [JOB 3] printing: 7
+I'm on thread: [JOB 3] printing: 8
+I'm on thread: [JOB 3] printing: 9
+I'm on thread: [JOB 3] printing: 10
+I'm on thread: [JOB 3] printing: 11
+End IOThread[Thread-5,7,main]
+Thread[Thread-5,7,main] adding process to ready queue.
+I'm on thread: [JOB 3] printing: 12
+I'm on thread: [JOB 3] printing: 13
+I'm on thread: [JOB 3] printing: 14
+evidently there is now a job on readyQ
+Start IOThread[Thread-6,7,main]
+I'm on thread: [JOB 1] printing: 16
+I'm on thread: [JOB 1] printing: 17
+I'm on thread: [JOB 1] printing: 18
+I'm on thread: [JOB 1] printing: 19
+I'm on thread: [JOB 1] printing: 20
+I'm on thread: [JOB 1] printing: 21
+I'm on thread: [JOB 1] printing: 22
+I'm on thread: [JOB 1] printing: 23
+I'm on thread: [JOB 1] printing: 24
+I'm on thread: [JOB 1] printing: 25
+I'm on thread: [JOB 1] printing: 26
+I'm on thread: [JOB 1] printing: 27
+End IOThread[Thread-6,7,main]
+Thread[Thread-6,7,main] adding process to ready queue.
+I'm on thread: [JOB 1] printing: 28
+I'm on thread: [JOB 1] printing: 29
+I'm on thread: [JOB 1] printing: 30
+I'm on thread: [JOB 1] printing: 31
+I'm on thread: [JOB 1] printing: 32
+I'm on thread: [JOB 1] printing: 33
+I'm on thread: [JOB 1] printing: 34
+evidently there is now a job on readyQ
+I'm on thread: [JOB 2] printing: 13
+I'm on thread: [JOB 2] printing: 14
+I'm on thread: [JOB 2] printing: 15
+I'm on thread: [JOB 2] printing: 16
+I'm on thread: [JOB 2] printing: 17
+I'm on thread: [JOB 2] printing: 18
+I'm on thread: [JOB 2] printing: 19
+I'm on thread: [JOB 2] printing: 20
+I'm on thread: [JOB 2] printing: 21
+I'm on thread: [JOB 2] printing: 22
+I'm on thread: [JOB 2] printing: 23
+I'm on thread: [JOB 2] printing: 24
+I'm on thread: [JOB 2] printing: 25
+I'm on thread: [JOB 2] printing: 26
+I'm on thread: [JOB 2] printing: 27
+I'm on thread: [JOB 2] printing: 28
+I'm on thread: [JOB 2] printing: 29
+I'm on thread: [JOB 2] printing: 30
+I'm on thread: [JOB 2] printing: 31
+evidently there is now a job on readyQ
+I'm on thread: [JOB 3] printing: 15
+I'm on thread: [JOB 3] printing: 16
+I'm on thread: [JOB 3] printing: 17
+I'm on thread: [JOB 3] printing: 18
+I'm on thread: [JOB 3] printing: 19
+I'm on thread: [JOB 3] printing: 20
+I'm on thread: [JOB 3] printing: 21
+I'm on thread: [JOB 3] printing: 22
+I'm on thread: [JOB 3] printing: 23
+I'm on thread: [JOB 3] printing: 24
+I'm on thread: [JOB 3] printing: 25
+I'm on thread: [JOB 3] printing: 26
+I'm on thread: [JOB 3] printing: 27
+I'm on thread: [JOB 3] printing: 28
+I'm on thread: [JOB 3] printing: 29
+I'm on thread: [JOB 3] printing: 30
+Thread[Thread-0,8,main] is blocking until there is a job.
+Start IOThread[Thread-7,7,main]
+End IOThread[Thread-7,7,main]
+Thread[Thread-7,7,main] adding process to ready queue.
+evidently there is now a job on readyQ
+I'm on thread: [JOB 3] printing: 31
+I'm on thread: [JOB 3] printing: 32
+I'm on thread: [JOB 3] printing: 33
+I'm on thread: [JOB 3] printing: 34
+I'm on thread: [JOB 3] printing: 35
+I'm on thread: [JOB 3] printing: 36
+I'm on thread: [JOB 3] printing: 37
+Gannt Chart:
+    Burst Start   Burst End    JOB        
+              0           2    IDLE       
+              3         189    JOB 1      
+            191         345    JOB 2      
+            346         528    JOB 3      
+            529         752    JOB 1      
+            752         980    JOB 2      
+            980        1170    JOB 3      
+           1171        1246    IDLE       
+           1246        1324    JOB 3      
+           1324        1324    FINISHED   
