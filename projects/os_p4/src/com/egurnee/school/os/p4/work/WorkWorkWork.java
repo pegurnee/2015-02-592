@@ -6,7 +6,6 @@ public class WorkWorkWork implements JobWorkable {
 	@Override
 	public void doWork() {
 		System.out.println("I'm on thread: " + Thread.currentThread()
-							+ " printing: " + this.jobNumber++);
+				+ " printing: " + this.jobNumber++);
 	}
-
 }

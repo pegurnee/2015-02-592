@@ -59,7 +59,6 @@ public class Job extends Thread {
 	public void run() {
 		this.myOS.getSingleThreadMutex().lock();
 
-		// this.startTime = System.currentTimeMillis();
 		this.doCPU();
 		while (!this.burstTimes.isEmpty()) {
 			this.doIO();
@@ -79,8 +78,6 @@ public class Job extends Thread {
 	}
 
 	private void doCPU() {
-
-		// this.myOS.getSingleThreadMutex().lock();
 		this.startTime = System.currentTimeMillis();
 		int currentBurstLimit = this.burstTimes.removeFirst();
 
@@ -90,27 +87,22 @@ public class Job extends Thread {
 				sleep(10);
 			} catch (InterruptedException e) {
 				System.out
-				.println(""
-						+ this.name
-						+ " is interrupted, hopefully only by TimeSlicer");
+						.println(""
+									+ this.name
+									+ " is interrupted, hopefully only by TimeSlicer");
 				e.printStackTrace();
 			}
 		}
-		// System.out.println(Thread.currentThread());
 
-		//
-
-		// this.getMyCondition().signal();
+		/*
+		 * Need to add record time at end of CPU, otherwise issues
+		 */
+		this.myOS.recordRunTime();
 	}
 
 	private synchronized void doIO() {
-		this.myOS.recordRunTime();
 		this.getMyCondition().signal();
-		// this.myCondition.signal();
-		// this.myOS.getSingleThreadMutex().unlock();
-		// new IODevice(this, this.burstTimes.removeFirst(), this.myOS);
-		// this.myCondition.signal();
-		// this.myOS.getSingleThreadMutex().unlock();
+
 		final int ioTime = this.burstTimes.removeFirst();
 		this.myOS.doIO(ioTime);
 
@@ -120,22 +112,5 @@ public class Job extends Thread {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		// this.myOS.getSingleThreadMutex().unlock();
-		// this.myOS.getSingleThreadMutex().lock();
-		// try {
-		// Job.yield();
-		// this.wait(10);
-		// } catch (InterruptedException e) {
-		// // TODO Auto-generated catch block
-		// e.printStackTrace();
-		// }
-		// this.myOS.getSingleThreadMutex().lock();
-		// try {
-		// System.out.println("here");
-		// this.myCondition.await();
-		// System.out.println("and here");
-		// } catch (InterruptedException e) {
-		// e.printStackTrace();
-		// }
 	}
 }

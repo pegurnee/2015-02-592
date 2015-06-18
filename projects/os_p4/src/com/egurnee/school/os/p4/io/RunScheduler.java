@@ -23,7 +23,7 @@ public class RunScheduler {
 			fileIn = new Scanner(new FileInputStream(INPUT_FILE_NAME));
 		} catch (FileNotFoundException e) {
 			System.out.println("Input file " + INPUT_FILE_NAME + " not"
-								+ " found. ");
+					+ " found. ");
 			System.exit(1);
 		}
 		while (fileIn.hasNextLine()) {
@@ -33,6 +33,8 @@ public class RunScheduler {
 	}
 
 	public static void main(String[] args) {
+		System.gc();
+
 		Thread thisThread = Thread.currentThread();
 		thisThread.setPriority(Thread.MAX_PRIORITY);
 		SystemSimulator kernel = new SystemSimulator(new FCFSScheduler());

@@ -10,10 +10,13 @@ public class FCFSScheduler extends Scheduler {
 
 	@Override
 	public synchronized void add(Job J) {
-		System.out.println(Thread.currentThread()
-							+ " adding process to ready queue.");
-		this.notify();
+		System.out.println(Thread.currentThread() + " adding " + J
+							+ " to ready queue.");
+		/*
+		 * Need to add then notify, otherwise issues
+		 */
 		this.theReadyQueue.add(J);
+		this.notify();
 	}
 
 	@Override
@@ -39,12 +42,7 @@ public class FCFSScheduler extends Scheduler {
 		this.theInputQueue.remove(j);
 		if (!j.getBurstTime().isEmpty()) {
 			this.add(j);
-			// this.clearRunningJob();
-			// this.notify();
 		}
-
-		// this.theReadyQueue.add(j);
-		// j.shouldRun();
 	}
 
 	@Override
@@ -71,18 +69,10 @@ public class FCFSScheduler extends Scheduler {
 					elem.getMyCondition().signal();
 				} else {
 					elem.start();
-					// try {
-					// elem.getMyCondition().await();
-					// } catch (InterruptedException e) {
-					// e.printStackTrace();
-					// }
 				}
 			}
 		} else {
 			return false;
-			// final Job elem = this.theInputQueue.poll();
-			// this.currentlyRunningJob = elem;
-			// elem.getMyCondition().signal();
 		}
 		return true;
 	}
@@ -96,6 +86,5 @@ public class FCFSScheduler extends Scheduler {
 	public synchronized void startIO() {
 		final Job theCurrentJob = this.currentlyRunningJob;
 		this.theInputQueue.add((Job) Thread.currentThread());
-		// this.clearRunningJob();
 	}
 }

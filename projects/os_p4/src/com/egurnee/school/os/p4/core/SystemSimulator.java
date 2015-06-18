@@ -34,30 +34,15 @@ public class SystemSimulator extends Thread {
 	}
 
 	public void doIO(int msec) {
-		// try {
-		// this.myScheduler.currentlyRunningJob.wait();
-		// } catch (InterruptedException e) {
-		// // TODO Auto-generated catch block
-		// e.printStackTrace();
-		// }
-		// this.myScheduler.currentlyRunningJob.getMyCondition().signal();
-		// this.myScheduler.startIO();
 		final IODevice ioDevice = new IODevice((Job) Thread.currentThread(),
 				msec, this.myScheduler, this);
-		// this.myScheduler.startIO();
 		this.myScheduler.clearRunningJob();
 		this.myScheduler.startIO();
 		ioDevice.start();
-
-		// this.myScheduler.finishIO(this.myScheduler.getRunningJob());
-		// this.singleThreadMutex.unlock();
 	}
 
 	public void exit() {
-		this.recordRunTime();
-
 		this.myScheduler.clearRunningJob();
-		// this.singleThreadMutex.unlock();
 	}
 
 	public ReentrantLock getSingleThreadMutex() {
@@ -68,9 +53,6 @@ public class SystemSimulator extends Thread {
 		this.jobsRemainToBeSubmitted = false;
 	}
 
-	/**
-	 *
-	 */
 	public synchronized void recordRunTime() {
 		Job terminatingJob = (Job) Thread.currentThread();
 		Job schedulersRunning = this.myScheduler.getRunningJob();
@@ -109,7 +91,6 @@ public class SystemSimulator extends Thread {
 				break;
 			}
 
-			// while (this.myScheduler.hasRunningJob()) {
 			if (this.myScheduler.hasRunningJob()) {
 				try {
 					this.myScheduler.getRunningJob().getMyCondition().await();
@@ -117,7 +98,6 @@ public class SystemSimulator extends Thread {
 					e.printStackTrace();
 				}
 			}
-			// }
 		}
 
 		this.chart.end();
