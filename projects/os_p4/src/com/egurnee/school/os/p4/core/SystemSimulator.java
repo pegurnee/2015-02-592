@@ -71,7 +71,7 @@ public class SystemSimulator extends Thread {
 	/**
 	 *
 	 */
-	public void recordRunTime() {
+	public synchronized void recordRunTime() {
 		Job terminatingJob = (Job) Thread.currentThread();
 		Job schedulersRunning = this.myScheduler.getRunningJob();
 
@@ -105,15 +105,19 @@ public class SystemSimulator extends Thread {
 						currentIdleTimeEnd, "IDLE");
 			}
 
-			this.myScheduler.makeRun();
+			if (!this.myScheduler.makeRun()) {
+				break;
+			}
 
-			while (this.myScheduler.hasRunningJob()) {
+			// while (this.myScheduler.hasRunningJob()) {
+			if (this.myScheduler.hasRunningJob()) {
 				try {
 					this.myScheduler.getRunningJob().getMyCondition().await();
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
 			}
+			// }
 		}
 
 		this.chart.end();

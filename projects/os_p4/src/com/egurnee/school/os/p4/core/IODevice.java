@@ -18,20 +18,11 @@ public class IODevice extends Thread {
 
 	@Override
 	public void run() {
-		// this.kernel.getSingleThreadMutex().lock();
-		// this.scheduler.startIO();
-		// this.scheduler.startIO();
-		// this.scheduler.clearRunningJob();
 		try {
-			System.out.println("Start IO" + this);
 			sleep(this.numberOfMsecs);
-			System.out.println("End IO" + this);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		// TODO Auto-generated method stub
 		this.scheduler.finishIO(this.associatedJob);
-		// this.associatedJob.getMyCondition().signal();
-		// this.kernel.getSingleThreadMutex().unlock();
 	}
 }
