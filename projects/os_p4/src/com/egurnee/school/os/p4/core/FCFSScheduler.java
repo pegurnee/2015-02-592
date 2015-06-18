@@ -36,11 +36,13 @@ public class FCFSScheduler extends Scheduler {
 
 	@Override
 	public synchronized void finishIO(Job j) {
-		// this.clearRunningJob();
+		this.theInputQueue.remove(j);
+		this.add(j);
+		this.clearRunningJob();
 		// this.notify();
 
-		j.getMyCondition().signal();
-		this.theReadyQueue.add(j);
+		// j.getMyCondition().signal();
+		// this.theReadyQueue.add(j);
 		// j.shouldRun();
 	}
 
@@ -65,12 +67,7 @@ public class FCFSScheduler extends Scheduler {
 			this.currentlyRunningJob = elem;
 			if (elem.getState() != Thread.State.TERMINATED) {
 				if (elem.isAlive()) {
-					// TODO
-					try {
-						elem.getMyCondition().await();
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
+					elem.getMyCondition().signal();
 				} else {
 					elem.start();
 					// try {
@@ -93,8 +90,8 @@ public class FCFSScheduler extends Scheduler {
 
 	@Override
 	public void startIO() {
-		final Job elem = this.theInputQueue.poll();
-		elem.start();
-		this.currentlyRunningJob = elem;
+		this.theInputQueue.add(this.currentlyRunningJob);
+		if (this.hasRunningJob()) {
+		}
 	}
 }

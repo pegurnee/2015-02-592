@@ -25,10 +25,13 @@ public class Submittor extends Thread {
 	public void run() {
 		final int limit = this.myJobDescs.size();
 		for (int i = 0; i < limit; i++) {
+			LinkedList<Integer> bursts = new LinkedList<>();
+
 			this.st = new StringTokenizer(this.myJobDescs.get(i));
+
 			String id = "JOB " + this.st.nextToken();
 			int delay = Integer.parseInt(this.st.nextToken());
-			LinkedList<Integer> bursts = new LinkedList<>();
+
 			while (this.st.hasMoreTokens()) {
 				bursts.add(Integer.parseInt(this.st.nextToken()));
 			}

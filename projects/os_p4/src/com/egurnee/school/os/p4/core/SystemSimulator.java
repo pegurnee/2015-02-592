@@ -42,8 +42,11 @@ public class SystemSimulator extends Thread {
 		// }
 		// this.myScheduler.currentlyRunningJob.getMyCondition().signal();
 		// this.myScheduler.startIO();
-		new IODevice(this.myScheduler.currentlyRunningJob, msec,
-				this.myScheduler, this).start();
+		final IODevice ioDevice = new IODevice(
+				this.myScheduler.getRunningJob(), msec, this.myScheduler, this);
+		this.myScheduler.clearRunningJob();
+		ioDevice.start();
+		System.out.println("ha");
 	}
 
 	public void exit() {
@@ -52,15 +55,15 @@ public class SystemSimulator extends Thread {
 
 		if (!terminatingJob.equals(schedulersRunning)) {
 			System.err.println("the world is broken, "
-								+ "also I didn't do everything correctly.");
+					+ "also I didn't do everything correctly.");
 			System.exit(ILLEGAL_TERMINATION);
 		}
 
 		this.chart.recordEvent(terminatingJob.getStartTime(),
 				System.currentTimeMillis(), terminatingJob.getNameOf());
+
 		this.myScheduler.clearRunningJob();
-		terminatingJob.getMyCondition().signalAll();
-		this.singleThreadMutex.unlock();
+		// this.singleThreadMutex.unlock();
 	}
 
 	public ReentrantLock getSingleThreadMutex() {
