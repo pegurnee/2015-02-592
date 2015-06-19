@@ -10,24 +10,24 @@ package com.egurnee.school.os.p5;
 
  constructors:
 
- Pager();          
- Pager(int numFrames);	
+ Pager();
+ Pager(int numFrames);
  See SetNumFrames
 
  accessors:
 
  int NumFaults();
- int Accesses();   
+ int Accesses();
  Number of page requests the pager has handled so far.  This can be
  considered the "time" of the simulation.
 
  operators:
 
- void Run(const PageSeq &seq);  
+ void Run(const PageSeq &seq);
  Run the simultion & collect stats.  This method makes use of the polymorphism provided
  by DoPageFault and DoPageAccess; for any pager, P, of any type, P.Run() will execute
  Pager::Run.
- void Print(); 
+ void Print();
  Print the fault table resulting from most recent Run
  int SetNumFrames(int num);
  Set the number of frames to be used during a run
@@ -36,10 +36,10 @@ package com.egurnee.school.os.p5;
  Each Pager must provide the following interface:
 
  virtual char * Name() = 0;
- The name of the pager   
+ The name of the pager
  virtual int DoPageFault() = 0;
  Take care of whatever bookeeping is necessary before a new page is placed
- in the Pager's myFrames.  
+ in the Pager's myFrames.
  Returns index of the frame where the new page's ID is to be placed (the actual
  replacement is done in Pager::Run.)
  virtual void DoPageAccess(int frameID) = 0;
@@ -60,19 +60,26 @@ package com.egurnee.school.os.p5;
 
  */
 
-public abstract class AbstractPager {
+public abstract class AbstractPager extends Thread {
 	protected int myAccesses;
 	protected Frames myFrames;
 	protected PrintBuffer myHistory;
 	protected int myNumFaults;
+
+	protected PageSeq theSequence;
 
 	public AbstractPager() {
 		this.myNumFaults = 0;
 	}
 
 	public AbstractPager(int numFrames) {
-		this();
+		this.myNumFaults = 0;
 		this.SetNumFrames(numFrames);
+	}
+
+	public AbstractPager(PageSeq sequence) {
+		this.myNumFaults = 0;
+		this.SetNumFrames(sequence.getFramesOfMemory());
 	}
 
 	public int Accesses() {
@@ -89,10 +96,25 @@ public abstract class AbstractPager {
 		return this.myNumFaults;
 	}
 
-	public void Print() {}
+	public void Print() {
+		System.out.println(this.Name() + ":");
+		System.out.println(this.myHistory);
+	}
 
-	public void PrintStats(int optimal) {}
+	public void PrintStats(int optimal) {
+		System.out.printf("%-8s %8s %8.2f%%", this.Name(), this.NumFaults(),
+				(this.Accesses() / (double) optimal) * 100);
+	}
 
+	@Override
+	public void run() {
+		if (this.theSequence == null) {
+			return;
+		}
+		this.Run(this.theSequence);
+	}
+
+	// TODO
 	public void Run(PageSeq seq) {}
 
 	public int SetNumFrames(int num) {
