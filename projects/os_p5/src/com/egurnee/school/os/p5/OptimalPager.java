@@ -14,10 +14,4 @@ public class OptimalPager extends AbstractPager {
 		return 0;
 	}
 
-	@Override
-	public String Name() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

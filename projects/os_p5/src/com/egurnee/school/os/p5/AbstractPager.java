@@ -1,5 +1,7 @@
 package com.egurnee.school.os.p5;
 
+import java.util.Iterator;
+
 /*
  CLASS: Pager
 
@@ -66,6 +68,7 @@ public abstract class AbstractPager extends Thread {
 	protected PrintBuffer myHistory;
 	protected int myNumFaults;
 
+	protected PagingScheme theScheme;
 	protected PageSeq theSequence;
 
 	public AbstractPager() {
@@ -82,7 +85,7 @@ public abstract class AbstractPager extends Thread {
 		this.SetNumFrames(sequence.getFramesOfMemory());
 	}
 
-	public int Accesses() {
+	public final int Accesses() {
 		return this.myAccesses;
 	}
 
@@ -90,24 +93,26 @@ public abstract class AbstractPager extends Thread {
 
 	public abstract int DoPageFault();
 
-	public abstract String Name();
+	public final String Name() {
+		return this.theScheme.toString();
+	};
 
-	public int NumFaults() {
+	public final int NumFaults() {
 		return this.myNumFaults;
 	}
 
-	public void Print() {
+	public final void Print() {
 		System.out.println(this.Name() + ":");
 		System.out.println(this.myHistory);
 	}
 
-	public void PrintStats(int optimal) {
-		System.out.printf("%-8s %8s %8.2f%%", this.Name(), this.NumFaults(),
+	public final void PrintStats(int optimal) {
+		System.out.printf("%-8s %8s %8.2f%%", this.theScheme, this.NumFaults(),
 				(this.Accesses() / (double) optimal) * 100);
 	}
 
 	@Override
-	public void run() {
+	public final void run() {
 		if (this.theSequence == null) {
 			return;
 		}
@@ -115,9 +120,17 @@ public abstract class AbstractPager extends Thread {
 	}
 
 	// TODO
-	public void Run(PageSeq seq) {}
+	public void Run(PageSeq seq) {
+		this.theSequence = seq;
+		final Iterator<Integer> iterator = this.theSequence
+				.getSequenceIterator();
 
-	public int SetNumFrames(int num) {
+		while (iterator.hasNext()) {
+			this.DoPageAccess(iterator.next());
+		}
+	}
+
+	public final int SetNumFrames(int num) {
 		this.myFrames.SetNumFrames(num);
 		return this.myFrames.Size();
 	}
