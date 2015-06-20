@@ -102,6 +102,7 @@ public abstract class AbstractPager extends Thread {
 	}
 
 	public final void accessPage() {
+		this.myHistory.Store(this.myFrames, this.currentPage);
 		this.myAccesses++;
 	}
 
@@ -111,6 +112,7 @@ public abstract class AbstractPager extends Thread {
 
 	public final void faultPage() {
 		this.myNumFaults++;
+		this.myHistory.fault(this.currentPage);
 	}
 
 	public final String Name() {
@@ -141,6 +143,7 @@ public abstract class AbstractPager extends Thread {
 
 	// TODO
 	public void Run(PageSeq seq) {
+		this.myHistory = new PrintBuffer(seq.getFramesOfMemory());
 		this.theSequence = seq;
 		this.myNumFaults = 0;
 		this.myAccesses = 0;

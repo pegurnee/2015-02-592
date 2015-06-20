@@ -51,6 +51,7 @@ public class OptimalPager extends AbstractPager {
 	public void Run(PageSeq seq) {
 		this.theSequenceList = new LinkedList<>(seq.getTheSequence());
 
+		this.myHistory = new PrintBuffer(seq.getFramesOfMemory());
 		this.theSequence = seq;
 		this.myNumFaults = 0;
 		this.myAccesses = 0;

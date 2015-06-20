@@ -27,7 +27,6 @@ public class LeastFrequentlyUsedPager extends AbstractPager {
 			final int key = this.myFrames.get(i);
 			final Integer integer2 = this.anyUse.get(key);
 			this.anyUse.put(key, ((integer2 == null) ? 0 : integer2) + 1);
-
 		}
 	}
 

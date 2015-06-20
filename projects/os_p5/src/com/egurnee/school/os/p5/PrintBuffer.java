@@ -1,5 +1,7 @@
 package com.egurnee.school.os.p5;
 
+import java.util.LinkedList;
+
 /*
 
  CLASS: PrintBuffer
@@ -28,7 +30,9 @@ package com.egurnee.school.os.p5;
 
  */
 public class PrintBuffer {
-	private static final int COLS_PER_LINE = 0;
+	private static final int COLS_PER_LINE = 78;
+
+	private LinkedList<Integer>[] data;
 
 	private Frames[] myFrameHistory;
 	private int[] myReferenceString;
@@ -39,15 +43,57 @@ public class PrintBuffer {
 		this.mySize = 0;
 	}
 
+	public PrintBuffer(int numframes) {
+		this.mySize = numframes;
+		this.data = new LinkedList[numframes + 1];
+		for (int i = 0; i < this.data.length; i++) {
+			this.data[i] = new LinkedList<Integer>();
+		}
+
+	}
+
+	public void fault(int page) {
+		// this.myWasPageFault[page] = true;
+	}
+
 	public void Print() {}
 
 	public void Reset() {
 		this.mySize = 0;
 	}
 
-	public void Store(Frames f, int pageID) {}
+	public void Store(Frames f, int pageID) {
+		for (int i = 0; i < this.mySize; i++) {
+			this.data[i].add(f.get(i));
+		}
+		this.data[this.mySize].add(pageID);
+	}
 
 	public void Store(int pageID) {}
+
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		StringBuilder sb = new StringBuilder();
+		for (Integer i : this.data[this.mySize]) {
+			sb.append(i + " ");
+		}
+		sb.append("\n");
+		for (int i = 0; i < COLS_PER_LINE; i++) {
+			sb.append("_");
+		}
+		sb.append("\n");
+		// this.data[this.mySize] = null;
+		for (LinkedList<Integer> linkedList : this.data) {
+			if (!linkedList.equals(this.data[this.mySize])) {
+				for (Integer integer : linkedList) {
+					sb.append(integer + " ");
+				}
+			}
+			sb.append("\n");
+		}
+		return sb.toString();
+	}
 
 	private void PrintLine(int start, int end) {}
 
