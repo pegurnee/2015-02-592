@@ -24,4 +24,8 @@ public class PageSeq {
 	public Iterator<Integer> getSequenceIterator() {
 		return this.pageRequests.iterator();
 	}
+
+	public LinkedList<Integer> getTheSequence() {
+		return this.pageRequests;
+	}
 }

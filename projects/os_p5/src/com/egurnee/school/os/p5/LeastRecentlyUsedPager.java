@@ -10,6 +10,10 @@ public class LeastRecentlyUsedPager extends AbstractPager {
 	@Override
 	public void DoPageAccess(int pagePos) {
 		// TODO Auto-generated method stub
+		if (!this.myFrames.contains(pagePos)) {
+			this.DoPageFault();
+		}
+		this.accessPage();
 
 	}
 
