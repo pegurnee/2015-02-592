@@ -1,5 +1,7 @@
 package com.egurnee.school.os.p5;
 
+import java.util.NoSuchElementException;
+
 public class PagerFactory {
 	public static AbstractPager createPagerWithScheme(PagingScheme scheme) {
 		AbstractPager newPager = null;
@@ -17,7 +19,8 @@ public class PagerFactory {
 				newPager = new OptimalPager();
 				break;
 			default:
-				break;
+				System.err.println("IT'S A PROBLEM YO!");
+				throw new NoSuchElementException();
 		}
 		return newPager;
 	}

@@ -63,16 +63,20 @@ import java.util.Iterator;
  */
 
 public abstract class AbstractPager extends Thread {
+	protected int currentPage;
 	protected int myAccesses;
 	protected Frames myFrames;
 	protected PrintBuffer myHistory;
-	protected int myNumFaults;
 
+	protected int myNumFaults;
 	protected PagingScheme theScheme;
 	protected PageSeq theSequence;
 
 	public AbstractPager() {
 		this.myNumFaults = 0;
+		this.myAccesses = 0;
+		this.myFrames = new Frames();
+		this.myHistory = new PrintBuffer();
 	}
 
 	public AbstractPager(int numFrames) {
@@ -85,17 +89,33 @@ public abstract class AbstractPager extends Thread {
 		this.SetNumFrames(sequence.getFramesOfMemory());
 	}
 
+	public AbstractPager(PagingScheme theScheme) {
+		this.theScheme = theScheme;
+		this.myNumFaults = 0;
+		this.myAccesses = 0;
+		this.myFrames = new Frames();
+		this.myHistory = new PrintBuffer();
+	}
+
 	public final int Accesses() {
 		return this.myAccesses;
+	}
+
+	public final void accessPage() {
+		this.myAccesses++;
 	}
 
 	public abstract void DoPageAccess(int pagePos);
 
 	public abstract int DoPageFault();
 
+	public final void faultPage() {
+		this.myNumFaults++;
+	}
+
 	public final String Name() {
 		return this.theScheme.toString();
-	};
+	}
 
 	public final int NumFaults() {
 		return this.myNumFaults;
@@ -107,8 +127,8 @@ public abstract class AbstractPager extends Thread {
 	}
 
 	public final void PrintStats(int optimal) {
-		System.out.printf("%-8s %8s %8.2f%%", this.theScheme, this.NumFaults(),
-				(this.Accesses() / (double) optimal) * 100);
+		System.out.printf("%-8s %8s %8.2f%%%n", this.theScheme,
+				this.NumFaults(), (this.NumFaults() / (double) optimal) * 100);
 	}
 
 	@Override
@@ -122,11 +142,17 @@ public abstract class AbstractPager extends Thread {
 	// TODO
 	public void Run(PageSeq seq) {
 		this.theSequence = seq;
+		this.myNumFaults = 0;
+		this.myAccesses = 0;
+
+		this.SetNumFrames(seq.getFramesOfMemory());
+
 		final Iterator<Integer> iterator = this.theSequence
 				.getSequenceIterator();
 
 		while (iterator.hasNext()) {
-			this.DoPageAccess(iterator.next());
+			this.currentPage = iterator.next();
+			this.DoPageAccess(this.currentPage);
 		}
 	}
 

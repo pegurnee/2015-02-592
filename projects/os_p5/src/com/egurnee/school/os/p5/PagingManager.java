@@ -24,15 +24,30 @@ public class PagingManager {
 	public void applyPageTries(ArrayList<PageSeq> tries) {
 		this.tries = tries;
 		for (PageSeq pageSeq : this.tries) {
-			for (int i = 0; i < this.pagers.length; i++) {
-				this.pagers[i].Run(pageSeq);
+			for (AbstractPager abstractPager : this.pagers) {
+				abstractPager.Run(pageSeq);
 			}
+			this.printAll(pageSeq.getFramesOfMemory());
 		}
 	}
 
-	public void printAll() {
+	public void printAll(int frames) {
 		for (AbstractPager abstractPager : this.pagers) {
 			abstractPager.Print();
+		}
+		System.out.printf("Using %d frames, the reference string yielded:%n",
+				frames);
+
+		int optimal = 0;
+		for (AbstractPager abstractPager : this.pagers) {
+			if (abstractPager.theScheme.equals(PagingScheme.OPTIMAL)) {
+				optimal = abstractPager.NumFaults();
+				break;
+			}
+		}
+
+		for (AbstractPager abstractPager : this.pagers) {
+			abstractPager.PrintStats(optimal);
 		}
 	}
 }

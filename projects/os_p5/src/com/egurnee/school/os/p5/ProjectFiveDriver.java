@@ -9,7 +9,7 @@ public class ProjectFiveDriver {
 
 		final PagingManager pagingManager = new PagingManager(triesFromFile);
 
-		pagingManager.printAll();
+		// pagingManager.printAll(4);
 	}
 
 }
