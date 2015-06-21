@@ -7,8 +7,7 @@ public class FCFSAlgorithm implements SchedulerAlgorithm {
 
 	@Override
 	public AlgorithmResult runWith(LinkedList<Integer> fifoOrder,
-			int startPosition, int numCyinders) {
-		// TODO Auto-generated method stub
+			int startPosition, int previousPosition, int numCyinders) {
 		int currentPosition = startPosition;
 		int runningDistance = 0;
 		LinkedList<Integer> result = new LinkedList<>();

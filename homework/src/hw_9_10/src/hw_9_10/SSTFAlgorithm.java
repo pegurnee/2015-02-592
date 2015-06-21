@@ -1,5 +1,6 @@
 package hw_9_10;
 
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.stream.Collectors;
@@ -8,8 +9,7 @@ public class SSTFAlgorithm implements SchedulerAlgorithm {
 
 	@Override
 	public AlgorithmResult runWith(LinkedList<Integer> fifoOrder,
-			int startPosition, int numCyinders) {
-		// TODO Auto-generated method stub
+			int startPosition, int previousPosition, int numCyinders) {
 		int currentPosition = startPosition;
 		int runningDistance = 0;
 		LinkedList<Integer> result = new LinkedList<>();
@@ -21,8 +21,6 @@ public class SSTFAlgorithm implements SchedulerAlgorithm {
 					.map(i -> i = Math.abs(finalCurrentPos - i.intValue()))
 					.collect(Collectors.toList()));
 
-			// temp;
-			System.out.println(temp);
 			int currentMin = Integer.MAX_VALUE;
 			int i = 0;
 			int loc = -1;
@@ -34,9 +32,10 @@ public class SSTFAlgorithm implements SchedulerAlgorithm {
 				}
 				i++;
 			}
+			int location = temp.indexOf(temp.stream()
+					.min(Comparator.naturalOrder()).get());
 
-			final Integer request = fifoOrder.remove(loc);
-			// System.out.println(request);
+			final Integer request = fifoOrder.remove(location);
 			runningDistance += Math.abs(currentPosition - request);
 			currentPosition = request;
 			result.add(request);
