@@ -13,6 +13,7 @@ public class DiskDriveSchedulerDriver {
 		for (int i : nums) {
 			test.add(i);
 		}
-		System.out.println(new FCFSAlgorithm().runWith(test, 143, 5000));
+		System.out.println(SchedulerAlgorithmFactory.createAlgorithm(
+				SchedulerType.SSTF).runWith(test, 143, 5000));
 	}
 }

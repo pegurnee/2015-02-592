@@ -2,7 +2,7 @@ package hw_9_10;
 
 public class SchedulerAlgorithmFactory {
 
-	public SchedulerAlgorithm createAlgorithm(SchedulerType type) {
+	public static SchedulerAlgorithm createAlgorithm(SchedulerType type) {
 		SchedulerAlgorithm theAlgorithm;
 		switch (type) {
 			case C_LOOK:
