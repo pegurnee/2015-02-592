@@ -4,6 +4,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 public class FCFSAlgorithm implements SchedulerAlgorithm {
+	private final SchedulerType type = SchedulerType.FCFS;
 
 	@Override
 	public AlgorithmResult runWith(LinkedList<Integer> fifoOrder,
@@ -19,7 +20,7 @@ public class FCFSAlgorithm implements SchedulerAlgorithm {
 			result.add(request);
 			currentPosition = request;
 		}
-		return new AlgorithmResult(result, runningDistance);
+		return new AlgorithmResult(result, runningDistance, this.type);
 	}
 
 }

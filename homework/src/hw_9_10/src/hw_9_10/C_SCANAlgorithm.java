@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.stream.Collectors;
 
 public class C_SCANAlgorithm implements SchedulerAlgorithm {
+	private final SchedulerType type = SchedulerType.C_SCAN;
 
 	@Override
 	public AlgorithmResult runWith(LinkedList<Integer> fifoOrder,
@@ -37,16 +38,16 @@ public class C_SCANAlgorithm implements SchedulerAlgorithm {
 
 			final int currentPosition2 = currentPosition;
 			final boolean headingDownAndNothingLower = down
-														&& !(fifoOrder.stream()
-																.anyMatch(i -> i < currentPosition2));
+					&& !(fifoOrder.stream()
+							.anyMatch(i -> i < currentPosition2));
 			final boolean headingUpAndNothingHigher = !down
-														&& !(fifoOrder.stream()
-																.anyMatch(i -> i > currentPosition2));
+					&& !(fifoOrder.stream()
+							.anyMatch(i -> i > currentPosition2));
 
 			if (!fifoOrder.isEmpty()
-					&& (headingDownAndNothingLower || headingUpAndNothingHigher)) {
+				&& (headingDownAndNothingLower || headingUpAndNothingHigher)) {
 				if ((currentPosition2 == 0)
-						|| (currentPosition2 == (numCylinders - 1))) {
+					|| (currentPosition2 == (numCylinders - 1))) {
 					if (down) {
 						result.add(numCylinders - 1);
 						currentPosition = numCylinders - 1;
@@ -65,7 +66,7 @@ public class C_SCANAlgorithm implements SchedulerAlgorithm {
 			}
 
 		}
-		return new AlgorithmResult(result, runningDistance);
+		return new AlgorithmResult(result, runningDistance, this.type);
 	}
 
 }

@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.stream.Collectors;
 
 public class LOOKAlgorithm implements SchedulerAlgorithm {
+	private final SchedulerType type = SchedulerType.LOOK;
 
 	@Override
 	public AlgorithmResult runWith(LinkedList<Integer> fifoOrder,
@@ -49,7 +50,7 @@ public class LOOKAlgorithm implements SchedulerAlgorithm {
 			}
 
 		}
-		return new AlgorithmResult(result, runningDistance);
+		return new AlgorithmResult(result, runningDistance, this.type);
 	}
 
 }

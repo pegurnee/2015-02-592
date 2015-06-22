@@ -6,6 +6,7 @@ import java.util.LinkedList;
 import java.util.stream.Collectors;
 
 public class SSTFAlgorithm implements SchedulerAlgorithm {
+	private final SchedulerType type = SchedulerType.SSTF;
 
 	@Override
 	public AlgorithmResult runWith(LinkedList<Integer> fifoOrder,
@@ -41,7 +42,7 @@ public class SSTFAlgorithm implements SchedulerAlgorithm {
 			result.add(request);
 		}
 
-		return new AlgorithmResult(result, runningDistance);
+		return new AlgorithmResult(result, runningDistance, this.type);
 	}
 
 }

@@ -5,11 +5,14 @@ import java.util.LinkedList;
 public class AlgorithmResult {
 	private LinkedList<Integer> order;
 	private int totalDistance;
+	private final SchedulerType type;
 
-	public AlgorithmResult(LinkedList<Integer> order, int totalDistance) {
+	public AlgorithmResult(LinkedList<Integer> order, int totalDistance,
+			SchedulerType type) {
 		super();
 		this.order = order;
 		this.totalDistance = totalDistance;
+		this.type = type;
 	}
 
 	public LinkedList<Integer> getOrder() {
@@ -30,7 +33,8 @@ public class AlgorithmResult {
 
 	@Override
 	public String toString() {
-		return "AlgorithmResult [order=" + this.order + ", totalDistance="
-				+ this.totalDistance + "]";
+		return "AlgorithmResult [type=" + this.type + ", order=" + this.order
+				+ ", totalDistance=" + this.totalDistance + "]";
 	}
+
 }
