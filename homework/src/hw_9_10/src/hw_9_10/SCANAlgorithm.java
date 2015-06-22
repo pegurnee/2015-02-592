@@ -9,14 +9,11 @@ public class SCANAlgorithm implements SchedulerAlgorithm {
 	@Override
 	public AlgorithmResult runWith(LinkedList<Integer> fifoOrder,
 			int startPosition, int previousPosition, int numCylinders) {
-		// TODO Auto-generated method stub
 
 		boolean down = Integer.compare(previousPosition, startPosition) > 0;
 		int currentPosition = startPosition;
 		int runningDistance = 0;
 		LinkedList<Integer> result = new LinkedList<>();
-		// fifoOrder.add(0);
-		// fifoOrder.add(numCylinders - 1);
 
 		while (!fifoOrder.isEmpty()) {
 			LinkedList<Integer> temp;
