@@ -14,6 +14,6 @@ public class DiskDriveSchedulerDriver {
 			test.add(i);
 		}
 		System.out.println(SchedulerAlgorithmFactory.createAlgorithm(
-				SchedulerType.SSTF).runWith(test, 143, 125, 5000));
+				SchedulerType.SCAN).runWith(test, 143, 125, 5000));
 	}
 }

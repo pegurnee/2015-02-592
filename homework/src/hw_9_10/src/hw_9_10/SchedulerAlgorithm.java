@@ -4,6 +4,6 @@ import java.util.LinkedList;
 
 public interface SchedulerAlgorithm {
 	AlgorithmResult runWith(LinkedList<Integer> fifoOrder, int startPosition,
-			int previousPosition, int numCyinders);
+			int previousPosition, int numCylinders);
 
 }

@@ -9,7 +9,7 @@ public class SSTFAlgorithm implements SchedulerAlgorithm {
 
 	@Override
 	public AlgorithmResult runWith(LinkedList<Integer> fifoOrder,
-			int startPosition, int previousPosition, int numCyinders) {
+			int startPosition, int previousPosition, int numCylinders) {
 		int currentPosition = startPosition;
 		int runningDistance = 0;
 		LinkedList<Integer> result = new LinkedList<>();

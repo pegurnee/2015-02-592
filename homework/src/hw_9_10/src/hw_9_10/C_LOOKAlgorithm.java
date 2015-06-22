@@ -6,7 +6,7 @@ public class C_LOOKAlgorithm implements SchedulerAlgorithm {
 
 	@Override
 	public AlgorithmResult runWith(LinkedList<Integer> fifoOrder,
-			int startPosition, int previousPosition, int numCyinders) {
+			int startPosition, int previousPosition, int numCylinders) {
 		// TODO Auto-generated method stub
 		return null;
 	}
