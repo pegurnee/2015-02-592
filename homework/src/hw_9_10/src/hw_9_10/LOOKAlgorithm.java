@@ -38,14 +38,13 @@ public class LOOKAlgorithm implements SchedulerAlgorithm {
 
 			final int currentPosition2 = currentPosition;
 			final boolean headingDownAndNothingLower = down
-					&& !(fifoOrder.stream()
-							.anyMatch(i -> i < currentPosition2));
+														&& !(fifoOrder.stream()
+																.anyMatch(i -> i < currentPosition2));
 			final boolean headingUpAndNothingHigher = !down
-					&& !(fifoOrder.stream()
-							.anyMatch(i -> i > currentPosition2));
+														&& !(fifoOrder.stream()
+																.anyMatch(i -> i > currentPosition2));
 
 			if (headingDownAndNothingLower || headingUpAndNothingHigher) {
-
 				down = !down;
 			}
 
