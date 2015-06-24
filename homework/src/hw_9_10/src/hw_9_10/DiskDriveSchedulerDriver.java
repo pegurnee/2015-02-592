@@ -21,13 +21,13 @@ public class DiskDriveSchedulerDriver {
 		}
 		// System.out.println(SchedulerAlgorithmFactory.createAlgorithm(
 		// SchedulerType.SCAN).runWith(test, 88, 87, 200));
-		System.out.println(SchedulerAlgorithmFactory.createAlgorithm(
-				SchedulerType.SSTF).runWith(test, 88, 87, 200));
+		// System.out.println(SchedulerAlgorithmFactory.createAlgorithm(
+		// SchedulerType.SSTF).runWith(test, 88, 87, 200));
 		final SchedulerType[] enums = SchedulerType.values();
 		for (SchedulerType schedulerType : enums) {
 			System.out.println(SchedulerAlgorithmFactory.createAlgorithm(
 					schedulerType).runWith(new LinkedList<Integer>(test),
-					start, prev, cylinders));
+							start, prev, cylinders));
 		}
 	}
 }
