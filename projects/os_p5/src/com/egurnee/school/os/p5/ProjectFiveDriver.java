@@ -8,8 +8,10 @@ public class ProjectFiveDriver {
 				.getTriesFromFile("sample_input.txt");
 		final ArrayList<PageSeq> triesFromFile2 = PageSequenceFactory
 				.getTriesFromFile("homework_input.txt");
+		final ArrayList<PageSeq> triesFromFile3 = PageSequenceFactory
+				.getTriesFromFile("test_input.txt");
 
-		final PagingManager pagingManager = new PagingManager(triesFromFile2);
+		final PagingManager pagingManager = new PagingManager(triesFromFile3);
 
 		// pagingManager.printAll(4);
 	}
