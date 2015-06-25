@@ -3,26 +3,43 @@ package os_p6;
 import java.util.LinkedList;
 
 public abstract class DiskDriveAllocator {
-	protected Block[] blocks;
+	public enum AllocationType {
+		CONTIGUOUS, INDEXED;
+	}
+
+	protected Block[] blocks;;
 	protected DiskHead readWriteHead;
+	protected AllocationType type;
+
+	public DiskDriveAllocator(int numBlocks) {
+		this.blocks = new Block[numBlocks];
+		for (int i = 0; i < this.blocks.length; i++) {
+			this.blocks[i] = new Block();
+		}
+	}
 
 	public RequestResult handleRequest(DiskRequest theRequest) {
+
 		RequestResult toReturn;
 		switch (theRequest.getType()) {
 			case ADD:
-				toReturn = this.add(theRequest);
+				toReturn = this.add((ValidDiskRequest) theRequest);
 				break;
 			case APPEND:
-				toReturn = this.append(theRequest);
+				toReturn = this.append((ValidDiskRequest) theRequest);
 				break;
 			case DELETE:
-				toReturn = this.delete(theRequest);
+				toReturn = this.delete((ValidDiskRequest) theRequest);
 				break;
 			case PRINT:
-				toReturn = this.print(theRequest);
+				toReturn = this.print((ValidDiskRequest) theRequest);
 				break;
 			case READ:
-				toReturn = this.read(theRequest);
+				toReturn = this.read((ValidDiskRequest) theRequest);
+				break;
+			case INVALID:
+				toReturn = new RequestResult(
+						((InvalidDiskRequest) theRequest).toString());
 				break;
 			default:
 				toReturn = null;
@@ -31,13 +48,7 @@ public abstract class DiskDriveAllocator {
 		return toReturn;
 	}
 
-	protected abstract RequestResult add(DiskRequest theRequest);
-
-	protected abstract RequestResult append(DiskRequest theRequest);
-
-	protected abstract RequestResult delete(DiskRequest theRequest);
-
-	protected RequestResult print(DiskRequest theRequest) {
+	private final RequestResult print(ValidDiskRequest theRequest) {
 		StringBuilder printableString = new StringBuilder(
 				"============== Current Drive Contents =================\n");
 
@@ -55,8 +66,8 @@ public abstract class DiskDriveAllocator {
 				if (!filenames.contains(filename)) {
 					filenames.add(filename);
 					fileOutput.add(new StringBuilder(fileOutput.size() + ". "
-														+ filename
-														+ "\n\tBlocks:"));
+							+ filename
+							+ "\n\tBlocks:"));
 				}
 				final int indexOfName = filenames.indexOf(filename);
 				fileOutput.get(indexOfName).append(" " + i);
@@ -74,7 +85,13 @@ public abstract class DiskDriveAllocator {
 		printableString.append(blocksString);
 
 		return new RequestResult(printableString.toString());
-	};
+	}
 
-	protected abstract RequestResult read(DiskRequest theRequest);
+	protected abstract RequestResult add(ValidDiskRequest theRequest);
+
+	protected abstract RequestResult append(ValidDiskRequest theRequest);
+
+	protected abstract RequestResult delete(ValidDiskRequest theRequest);;
+
+	protected abstract RequestResult read(ValidDiskRequest theRequest);
 }
