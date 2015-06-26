@@ -4,12 +4,6 @@ import java.util.Arrays;
 
 public class ValidDiskRequest implements DiskRequest {
 
-	public static void main(String[] args) throws DiskAllocationException {
-		new ValidDiskRequest("print");
-		new ValidDiskRequest("read \"fourth in line.dat\"");
-		new ValidDiskRequest("add \"second hand.txt\" 8");
-	}
-
 	private String filename;
 	private int size;
 
@@ -38,40 +32,42 @@ public class ValidDiskRequest implements DiskRequest {
 			default:
 				throw new DiskAllocationException();
 		}
-		if (!"print".equals(tokens[0])) {
+		if (this.type != RequestType.PRINT) {
 			this.filename = tokens[1];
 			if ("add".equals(tokens[0]) || "append".equals(tokens[0])) {
 				this.size = Integer.parseInt(tokens[2]);
 			}
+			if (this.filename == null) {
+				throw new DiskAllocationException();
+			}
+			if (!((this.type == RequestType.DELETE) || (this.type == RequestType.READ))
+					&& !(this.size > 0)) {
+				throw new DiskAllocationException();
+			}
 		}
 	}
 
-	/**
-	 * @return the filename
-	 * @throws DiskAllocationException
-	 */
-	public final String getFilename() throws DiskAllocationException {
-		if (this.filename == null) {
-			throw new DiskAllocationException();
-		}
+	public final String getFilename() {
 		return this.filename;
 	}
 
-	/**
-	 * @return the size
-	 * @throws DiskAllocationException
-	 */
-	public final int getSize() throws DiskAllocationException {
-		if (!(this.size > 0)) {
-			throw new DiskAllocationException();
-		}
+	public final int getSize() {
 		return this.size;
 	}
 
-	/**
-	 * @return the type
-	 */
+	@Override
 	public final RequestType getType() {
 		return this.type;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "ValidDiskRequest [filename=" + this.filename + ", size="
+				+ this.size + ", type=" + this.type + "]";
 	}
 }

@@ -3,7 +3,7 @@ package os_p6;
 public class IndexedAllocator extends DiskDriveAllocator {
 	public IndexedAllocator(int numBlocks) {
 		super(numBlocks);
-		// TODO Auto-generated constructor stub
+		this.type = AllocationType.INDEXED;
 	}
 
 	@Override

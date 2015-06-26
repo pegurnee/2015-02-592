@@ -1,10 +1,16 @@
 package os_p6;
 
 public class DiskHead {
+	private final int limit;
 	private int position;
 
-	public DiskHead() {
+	public DiskHead(int limit) {
+		this.limit = limit;
 		this.position = 0;
+	}
+
+	public int currentPosition() {
+		return this.position;
 	}
 
 	public int moveTo(int position) {
@@ -13,7 +19,7 @@ public class DiskHead {
 	}
 
 	public int next() {
-		this.position++;
+		this.position = (this.position + 1) % this.limit;
 		return 1;
 	}
 
