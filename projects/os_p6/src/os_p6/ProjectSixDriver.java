@@ -4,7 +4,11 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.LinkedList;
 
-import os_p6.DiskDriveAllocator.AllocationType;
+import os_p6.allocator.DiskDriveAllocator;
+import os_p6.allocator.DiskDriveAllocator.AllocationType;
+import os_p6.io.DatFileHandler;
+import os_p6.io.api.DiskRequest;
+import os_p6.io.api.RequestResult;
 
 public class ProjectSixDriver {
 	public static void main(String[] args) {

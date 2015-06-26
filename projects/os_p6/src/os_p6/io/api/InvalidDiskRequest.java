@@ -1,4 +1,4 @@
-package os_p6;
+package os_p6.io.api;
 
 public class InvalidDiskRequest implements DiskRequest {
 	private final String requestString;

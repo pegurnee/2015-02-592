@@ -1,4 +1,4 @@
-package os_p6;
+package os_p6.blockunit;
 
 public class FileData implements Allocatable {
 	private final String filename;

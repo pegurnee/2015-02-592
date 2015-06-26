@@ -1,4 +1,6 @@
-package os_p6;
+package os_p6.io.api;
+
+import os_p6.exceptions.DiskAllocationException;
 
 public class RequestResult {
 	public enum Response {

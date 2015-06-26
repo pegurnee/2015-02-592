@@ -1,4 +1,7 @@
-package os_p6;
+package os_p6.allocator;
+
+import os_p6.io.api.RequestResult;
+import os_p6.io.api.ValidDiskRequest;
 
 public class IndexedAllocator extends DiskDriveAllocator {
 	public IndexedAllocator(int numBlocks) {

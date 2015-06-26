@@ -1,4 +1,4 @@
-package os_p6;
+package os_p6.blockunit;
 
 public class DiskHead {
 	private final int limit;

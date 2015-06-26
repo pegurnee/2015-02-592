@@ -1,4 +1,4 @@
-package os_p6;
+package os_p6.exceptions;
 
 public class DiskAllocationException extends Exception {
 
