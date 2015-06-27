@@ -1,9 +1,12 @@
-package hw_9_10;
+package os.hw.nine.algorithm;
 
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.stream.Collectors;
+
+import os.hw.nine.SchedulerType;
+import os.hw.nine.io.AlgorithmResult;
 
 public class SSTFAlgorithm implements SchedulerAlgorithm {
 	private final SchedulerType type = SchedulerType.SSTF;

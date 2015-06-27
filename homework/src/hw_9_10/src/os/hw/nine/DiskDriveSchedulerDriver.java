@@ -1,4 +1,4 @@
-package hw_9_10;
+package os.hw.nine;
 
 import java.util.LinkedList;
 

@@ -1,7 +1,10 @@
-package hw_9_10;
+package os.hw.nine.algorithm;
 
 import java.util.Iterator;
 import java.util.LinkedList;
+
+import os.hw.nine.SchedulerType;
+import os.hw.nine.io.AlgorithmResult;
 
 public class FCFSAlgorithm implements SchedulerAlgorithm {
 	private final SchedulerType type = SchedulerType.FCFS;

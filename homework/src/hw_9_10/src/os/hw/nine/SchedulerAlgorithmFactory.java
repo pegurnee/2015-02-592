@@ -1,4 +1,12 @@
-package hw_9_10;
+package os.hw.nine;
+
+import os.hw.nine.algorithm.C_LOOKAlgorithm;
+import os.hw.nine.algorithm.C_SCANAlgorithm;
+import os.hw.nine.algorithm.FCFSAlgorithm;
+import os.hw.nine.algorithm.LOOKAlgorithm;
+import os.hw.nine.algorithm.SCANAlgorithm;
+import os.hw.nine.algorithm.SSTFAlgorithm;
+import os.hw.nine.algorithm.SchedulerAlgorithm;
 
 public class SchedulerAlgorithmFactory {
 

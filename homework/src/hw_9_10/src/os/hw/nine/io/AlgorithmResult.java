@@ -1,6 +1,8 @@
-package hw_9_10;
+package os.hw.nine.io;
 
 import java.util.LinkedList;
+
+import os.hw.nine.SchedulerType;
 
 public class AlgorithmResult {
 	private LinkedList<Integer> order;

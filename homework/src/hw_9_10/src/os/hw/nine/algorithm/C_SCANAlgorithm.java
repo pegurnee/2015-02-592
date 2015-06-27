@@ -1,11 +1,14 @@
-package hw_9_10;
+package os.hw.nine.algorithm;
 
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.stream.Collectors;
 
-public class C_LOOKAlgorithm implements SchedulerAlgorithm {
-	private final SchedulerType type = SchedulerType.C_LOOK;
+import os.hw.nine.SchedulerType;
+import os.hw.nine.io.AlgorithmResult;
+
+public class C_SCANAlgorithm implements SchedulerAlgorithm {
+	private final SchedulerType type = SchedulerType.C_SCAN;
 
 	@Override
 	public AlgorithmResult runWith(LinkedList<Integer> fifoOrder,
@@ -46,17 +49,23 @@ public class C_LOOKAlgorithm implements SchedulerAlgorithm {
 
 			if (!fifoOrder.isEmpty()
 				&& (headingDownAndNothingLower || headingUpAndNothingHigher)) {
-				int newValue = -1;
-				if (down) {
-					newValue = fifoOrder.stream()
-							.max(Comparator.naturalOrder()).get();
+				if ((currentPosition2 == 0)
+					|| (currentPosition2 == (numCylinders - 1))) {
+					if (down) {
+						result.add(numCylinders - 1);
+						currentPosition = numCylinders - 1;
+					} else {
+						result.add(0);
+						currentPosition = 0;
+					}
+					runningDistance += numCylinders - 1;
 				} else {
-					newValue = fifoOrder.stream()
-							.min(Comparator.naturalOrder()).get();
+					if (down) {
+						fifoOrder.add(0);
+					} else {
+						fifoOrder.add(numCylinders - 1);
+					}
 				}
-				runningDistance += Math.abs(currentPosition - newValue);
-				currentPosition = newValue;
-				result.add(fifoOrder.remove(fifoOrder.indexOf(newValue)));
 			}
 
 		}
