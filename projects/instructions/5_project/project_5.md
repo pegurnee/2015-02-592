@@ -147,7 +147,7 @@ You should spend a fair amount of time designing your solution; don't just start
 
 To generate the page fault tables you'll need a structure (a class object) to hold the fault information as it is generated, so that you can print it in the correct format at the appropriate time. I called this class PrintBuffer. [Here is a C++ header file for PrintBuffer][4] (you should be able figure out how to convert it to Java.) 
 
-[1]: project_5.jpg
-[2]: http://www.emunix.emich.edu/~evett/OS/inputFiles_inJava.htm
-[3]: http://www.emunix.emich.edu/~evett/OS/pager.h
-[4]: http://www.emunix.emich.edu/~evett/OS/printBuffer.h
+[1]: src/project_5.jpg
+[2]: src/input_files_in_java.md
+[3]: src/pager.h
+[4]: src/printBuffer.h
