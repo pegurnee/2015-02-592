@@ -47,5 +47,5 @@ If you've not programmed a Java animation before, you might take a look at this 
 [3]: src/Producer.java
 [4]: src/Consumer.java
 [5]: src/Factory.java
-[6]: http://www.emunix.emich.edu/~evett/OS/kokouvi.mov
-[7]: java_animation.md
+[6]: src/kokouvi.mov
+[7]: src/java_animation.md
