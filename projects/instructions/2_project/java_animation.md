@@ -2,7 +2,7 @@
 
 *Last modified: "May 25, 2015, by evett"*
 
-![image][1]
+![bomb_img][1]
 
 A common, and recommended way to provide a dynamic graphical user interface in Java is to use a **Model-Viewer-Controller** architecture. This is a common technique for implementing GUI's.
 
@@ -21,7 +21,7 @@ The following code provides an example. When run, the program shows a small red 
 
 For your programming assignment (if you are attempting the extra credit graphical interface) the underlying data model should consist of the `Widget` each worker is working on (if any), and the contents of the conveyer belts (other `Widgets`). There will be four workers instead of the two shown here. Otherwise, the rest of the example code will remain unchanged. You should derive a way to use an aspect of the underlying data model to trigger (to the GUI thread) that the program should terminate.
 
-[1]: animation.gif
-[2]: http://www.emunix.emich.edu/~evett/OS/Code/DemoMultiThreadedAnimation.java
-[3]: http://www.emunix.emich.edu/~evett/OS/Code/DataModel.java
-[4]: http://www.emunix.emich.edu/~evett/OS/Code/Worker.java
+[1]: src/animation.gif
+[2]: src/DemoMultiThreadedAnimation.java
+[3]: src/DataModel.java
+[4]: src/Worker.java

@@ -42,10 +42,10 @@ For the animation to work, you'll have to insert a judicious number of `sleep()`
 
 If you've not programmed a Java animation before, you might take a look at this [overview][7].
 
-[1]: http://www.emunix.emich.edu/~evett/OS/SilberschatzCode/chap5/MessageQueue.java
-[2]: http://www.emunix.emich.edu/~evett/OS/SilberschatzCode/chap7/java-synchronization/boundedbuffer/BoundedBuffer.java
-[3]: http://www.emunix.emich.edu/~evett/OS/SilberschatzCode/chap7/java-synchronization/boundedbuffer/Producer.java
-[4]: http://www.emunix.emich.edu/~evett/OS/SilberschatzCode/chap7/java-synchronization/boundedbuffer/Consumer.java
-[5]: http://www.emunix.emich.edu/~evett/OS/SilberschatzCode/chap7/java-synchronization/boundedbuffer/Factory.java
+[1]: src/MessageQueue.java
+[2]: src/BoundedBuffer.java
+[3]: src/Producer.java
+[4]: src/Consumer.java
+[5]: src/Factory.java
 [6]: http://www.emunix.emich.edu/~evett/OS/kokouvi.mov
-[7]: http://www.emunix.emich.edu/~evett/OS/notes%20on%20Java%20animation.html
+[7]: java_animation.md
