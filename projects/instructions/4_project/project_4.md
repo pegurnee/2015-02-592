@@ -50,9 +50,9 @@ As I mentioned in the previous project, you may want to use Java's `StreamTokeni
 
 [This link is to a document explaining the potential for null reference exceptions resulting from invoking methods on "dead" threads][6].
 
-[1]: http://www.emunix.emich.edu/~evett/OS/Assignments/SchedulerWithIO/scheduleInput.txt
-[2]: http://www.emunix.emich.edu/~evett/OS/Assignments/SchedulerWithIO/scheduleInput.txt
-[3]: http://www.emunix.emich.edu/~evett/OS/Assignments/SchedulerWithIO/InputOutput.html
-[4]: http://www.emunix.emich.edu/~evett/OS/Assignments/SchedulerWithIO/tactics.html
-[5]: http://www.emunix.emich.edu/~evett/OS/interrupts.html
-[6]: http://www.emunix.emich.edu/~evett/OS/Assignments/SchedulerWithIO/Hint_nullReferences.htm
+[1]: src/scheduleInput.txt
+[2]: src/scheduleInput.txt
+[3]: src/InputOutput.md
+[4]: src/path_to_victory.md
+[5]: src/interrupts.md
+[6]: src/null_references.md
