@@ -85,6 +85,6 @@ Note that with **contiguous allocation**, an append may necessitate moving the e
 
 If there is insufficient space, print an error message, and do not alter the current disk set-up. If there is no file with the given name, print an appropriate warning, and create a new file with that name.
 
-[1]: project_6.gif
-[2]: http://www.emunix.emich.edu/~evett/OS/sampleInput-diskAlloc.dat
-[3]: http://www.emunix.emich.edu/~evett/OS/sampleOutput-diskAlloc.txt
+[1]: src/project_6.gif
+[2]: src/sampleInput-diskAlloc.dat
+[3]: src/sampleOutput-diskAlloc.txt

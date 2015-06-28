@@ -1,0 +1,117 @@
+--------------- START CONTIGUOUS SIMULATION ---------------
+totBlock = 30
+File bob.txt was added successfully
+File second hand.txt was added successfully
+File third was added successfully
+
+============== Current Drive Contents =================
+
+ DIRECTORY:
+1. bob.txt, Blocks 0 1 2 3 4
+2. second hand.txt, Blocks 5 6 7 8 9 10 11 12
+3. third, Blocks 13 14 15 16 17 18 19
+
+DETAILS:
+1 1 1 1 1 2 2 2 2 2
+2 2 2 3 3 3 3 3 3 3
+* * * * * * * * * *
+
+File bob.txt was read successfully with 1 head move(s).
+File second hand.txt was read successfully with 1 head move(s).
+File bob.txt was deleted successfully.
+
+============== Current Drive Contents =================
+
+ DIRECTORY:
+1. second hand.txt, Blocks 5 6 7 8 9 10 11 12
+2. third, Blocks 13 14 15 16 17 18 19
+
+DETAILS:
+* * * * * 1 1 1 1 1
+1 1 1 2 2 2 2 2 2 2
+* * * * * * * * * *
+
+
+File fourth in line.dat was added successfully
+File fifth is big was added successfully
+File fourth in line.dat was read successfully with 1 head move(s).
+File fifth is big was read successfully with 1 head move(s).
+
+============== Current Drive Contents =================
+
+ DIRECTORY:
+1. second hand.txt, Blocks 5 6 7 8 9 10 11 12
+2. third, Blocks 13 14 15 16 17 18 19
+3. fourth in line.dat, Blocks 0
+4. fifth is big, Blocks 20 21 22 23 24 25 26 27
+
+DETAILS:
+3 * * * * 1 1 1 1 1
+1 1 1 2 2 2 2 2 2 2
+4 4 4 4 4 4 4 4 * *
+
+========= Contiguous Allocation Statistics =============
+
+During this simulation,
+Total head moves = 4
+Total number of files that could not be allocated = 0
+
+----------------- END of CONTIGUOUS SIMULATION ---------------
+--------------- START INDEXED SIMULATION ---------------
+totBlock = 30
+File bob.txt was added successfully
+File second hand.txt was added successfully
+File third was added successfully
+
+============== Current Drive Contents =================
+
+ DIRECTORY:
+1. bob.txt, Blocks 0 1 2 3 4 5
+2. second hand.txt, Blocks 6 7 8 9 10 11 12 13 14 15
+3. third, Blocks 16 17 18 19 20 21 22 23
+
+DETAILS:
+1 1 1 1 1 1 2 2 2 2
+2 2 2 2 2 2 3 3 3 3
+3 3 3 3 * * * * * *
+
+File bob.txt was read successfully with 1 head move(s).
+File second hand.txt was read successfully with 1 head move(s).
+File bob.txt was deleted successfully.
+
+============== Current Drive Contents =================
+
+ DIRECTORY:
+1. second hand.txt, Blocks 6 7 8 9 10 11 12 13 14 15
+2. third, Blocks 16 17 18 19 20 21 22 23
+
+DETAILS:
+* * * * * * 1 1 1 1
+1 1 1 1 1 1 2 2 2 2
+2 2 2 2 * * * * * *
+
+File fourth in line.dat was added successfully
+File fifth is big was added successfully
+File fourth in line.dat was read successfully with 1 head move(s).
+File fifth is big was read successfully with 2 head move(s).
+
+============== Current Drive Contents =================
+
+ DIRECTORY:
+1. second hand.txt, Blocks 6 7 8 9 10 11 12 13 14 15
+2. third, Blocks 16 17 18 19 20 21 22 23
+3. fourth in line.dat, Blocks 0 1
+4. fifth is big, Blocks 2 3 4 5 24 25 26 27 28 29
+
+DETAILS:
+3 3 4 4 4 4 1 1 1 1
+1 1 1 1 1 1 2 2 2 2
+2 2 2 2 4 4 4 4 4 4
+
+========= Indexed Allocation Statistics =============
+
+During this simulation,
+Total head moves = 5
+Total number of files that could not be allocated = 0
+
+----------------- END of Indexed SIMULATION ---------------
