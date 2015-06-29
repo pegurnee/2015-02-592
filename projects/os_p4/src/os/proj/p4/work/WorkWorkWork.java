@@ -1,4 +1,4 @@
-package com.egurnee.school.os.p4.work;
+package os.proj.p4.work;
 
 public class WorkWorkWork implements JobWorkable {
 	private int jobNumber;

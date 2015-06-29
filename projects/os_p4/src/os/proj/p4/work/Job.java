@@ -1,9 +1,9 @@
-package com.egurnee.school.os.p4.work;
+package os.proj.p4.work;
 
 import java.util.LinkedList;
 import java.util.concurrent.locks.Condition;
 
-import com.egurnee.school.os.p4.core.SystemSimulator;
+import os.proj.p4.core.SystemSimulator;
 
 public class Job extends Thread {
 

@@ -1,11 +1,11 @@
-package com.egurnee.school.os.p4.core;
+package os.proj.p4.core;
 
 import java.util.LinkedList;
 import java.util.concurrent.locks.ReentrantLock;
 
-import com.egurnee.school.os.p4.io.GanntChart;
-import com.egurnee.school.os.p4.work.Job;
-import com.egurnee.school.os.p4.work.JobWorkable;
+import os.proj.p4.io.GanntChart;
+import os.proj.p4.work.Job;
+import os.proj.p4.work.JobWorkable;
 
 public class SystemSimulator extends Thread {
 	private static final int ILLEGAL_TERMINATION = -20;

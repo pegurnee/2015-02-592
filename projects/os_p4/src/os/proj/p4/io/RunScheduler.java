@@ -1,29 +1,31 @@
-package com.egurnee.school.os.p4.io;
+package os.proj.p4.io;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import com.egurnee.school.os.p4.core.FCFSScheduler;
-import com.egurnee.school.os.p4.core.SystemSimulator;
-import com.egurnee.school.os.p4.work.Submittor;
-import com.egurnee.school.os.p4.work.WorkFactory;
+import os.proj.p4.core.FCFSScheduler;
+import os.proj.p4.core.SystemSimulator;
+import os.proj.p4.work.Submittor;
+import os.proj.p4.work.WorkFactory;
 
 public class RunScheduler {
 
+	private final static String INPUT_FILE_LOCATION = "assets/";
 	private final static String INPUT_FILE_NAME = "scheduleInput.txt";
 
-	// private final static String INPUT_FILE_NAME = "assets/greek_input.txt";
-	// private final static String INPUT_FILE_NAME = "assets/titan_input.txt";
+	// private final static String INPUT_FILE_NAME = "greek_input.txt";
+	// private final static String INPUT_FILE_NAME = "titan_input.txt";
 
 	public static void getJobsFromFile(ArrayList<String> listOfLines) {
 		Scanner fileIn = null;
 		try {
-			fileIn = new Scanner(new FileInputStream(INPUT_FILE_NAME));
+			fileIn = new Scanner(new FileInputStream(INPUT_FILE_LOCATION
+														+ INPUT_FILE_NAME));
 		} catch (FileNotFoundException e) {
 			System.out.println("Input file " + INPUT_FILE_NAME + " not"
-					+ " found. ");
+								+ " found. ");
 			System.exit(1);
 		}
 		while (fileIn.hasNextLine()) {

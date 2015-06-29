@@ -1,6 +1,6 @@
-package com.egurnee.school.os.p4.core;
+package os.proj.p4.core;
 
-import com.egurnee.school.os.p4.work.Job;
+import os.proj.p4.work.Job;
 
 public class IODevice extends Thread {
 	private final Job associatedJob;

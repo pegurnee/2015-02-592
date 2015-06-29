@@ -1,8 +1,8 @@
-package com.egurnee.school.os.p4.core;
+package os.proj.p4.core;
 
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-import com.egurnee.school.os.p4.work.Job;
+import os.proj.p4.work.Job;
 
 public class FCFSScheduler extends Scheduler {
 	private final ConcurrentLinkedQueue<Job> theInputQueue = new ConcurrentLinkedQueue<>();

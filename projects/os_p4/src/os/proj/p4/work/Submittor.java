@@ -1,10 +1,10 @@
-package com.egurnee.school.os.p4.work;
+package os.proj.p4.work;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.StringTokenizer;
 
-import com.egurnee.school.os.p4.core.SystemSimulator;
+import os.proj.p4.core.SystemSimulator;
 
 public class Submittor extends Thread {
 	private final ArrayList<String> myJobDescs;
