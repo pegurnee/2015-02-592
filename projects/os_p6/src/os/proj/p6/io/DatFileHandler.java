@@ -1,4 +1,4 @@
-package os_p6.io;
+package os.proj.p6.io;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -10,14 +10,14 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-import os_p6.allocator.ContiguousAllocator;
-import os_p6.allocator.DiskDriveAllocator;
-import os_p6.allocator.IndexedAllocator;
-import os_p6.allocator.DiskDriveAllocator.AllocationType;
-import os_p6.exceptions.DiskAllocationException;
-import os_p6.io.api.DiskRequest;
-import os_p6.io.api.InvalidDiskRequest;
-import os_p6.io.api.ValidDiskRequest;
+import os.proj.p6.allocator.ContiguousAllocator;
+import os.proj.p6.allocator.DiskDriveAllocator;
+import os.proj.p6.allocator.IndexedAllocator;
+import os.proj.p6.allocator.DiskDriveAllocator.AllocationType;
+import os.proj.p6.exceptions.DiskAllocationException;
+import os.proj.p6.io.api.DiskRequest;
+import os.proj.p6.io.api.InvalidDiskRequest;
+import os.proj.p6.io.api.ValidDiskRequest;
 
 public class DatFileHandler {
 	private final String filepath;

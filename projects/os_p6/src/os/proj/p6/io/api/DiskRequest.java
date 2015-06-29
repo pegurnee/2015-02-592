@@ -1,4 +1,4 @@
-package os_p6.io.api;
+package os.proj.p6.io.api;
 
 public interface DiskRequest {
 	public enum RequestType {

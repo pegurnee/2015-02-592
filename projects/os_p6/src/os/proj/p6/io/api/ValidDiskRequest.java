@@ -1,8 +1,8 @@
-package os_p6.io.api;
+package os.proj.p6.io.api;
 
 import java.util.Arrays;
 
-import os_p6.exceptions.DiskAllocationException;
+import os.proj.p6.exceptions.DiskAllocationException;
 
 public class ValidDiskRequest implements DiskRequest {
 

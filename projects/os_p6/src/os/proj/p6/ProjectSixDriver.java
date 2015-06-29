@@ -1,20 +1,23 @@
-package os_p6;
+package os.proj.p6;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.LinkedList;
 
-import os_p6.allocator.DiskDriveAllocator;
-import os_p6.allocator.DiskDriveAllocator.AllocationType;
-import os_p6.io.DatFileHandler;
-import os_p6.io.api.DiskRequest;
-import os_p6.io.api.RequestResult;
+import os.proj.p6.allocator.DiskDriveAllocator;
+import os.proj.p6.allocator.DiskDriveAllocator.AllocationType;
+import os.proj.p6.io.DatFileHandler;
+import os.proj.p6.io.api.DiskRequest;
+import os.proj.p6.io.api.RequestResult;
 
 public class ProjectSixDriver {
+	private final static String INPUT_FILE_LOCATION = "assets/";
+
 	public static void main(String[] args) {
 		// TODO
 		try {
-			final DatFileHandler datFileHandler = new DatFileHandler("disk.dat");
+			final DatFileHandler datFileHandler = new DatFileHandler(
+					INPUT_FILE_LOCATION + "disk.dat");
 			final DiskDriveAllocator driveAllocator = datFileHandler
 					.getDriveAllocator(AllocationType.CONTIGUOUS);
 			final LinkedList<DiskRequest> requests = datFileHandler

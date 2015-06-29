@@ -1,11 +1,11 @@
-package os_p6.allocator;
+package os.proj.p6.allocator;
 
 import java.util.LinkedList;
 
-import os_p6.blockunit.FileData;
-import os_p6.io.api.RequestResult;
-import os_p6.io.api.ValidDiskRequest;
-import os_p6.io.api.RequestResult.Response;
+import os.proj.p6.blockunit.FileData;
+import os.proj.p6.io.api.RequestResult;
+import os.proj.p6.io.api.ValidDiskRequest;
+import os.proj.p6.io.api.RequestResult.Response;
 
 public class ContiguousAllocator extends DiskDriveAllocator {
 
