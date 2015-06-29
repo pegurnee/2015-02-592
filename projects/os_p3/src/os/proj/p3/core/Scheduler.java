@@ -1,4 +1,6 @@
-package com.egurnee.school.os.p3;
+package os.proj.p3.core;
+
+import os.proj.p3.work.Job;
 
 /**
  * <p>

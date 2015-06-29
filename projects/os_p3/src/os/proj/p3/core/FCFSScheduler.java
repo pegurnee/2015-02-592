@@ -1,6 +1,8 @@
-package com.egurnee.school.os.p3;
+package os.proj.p3.core;
 
 import java.util.concurrent.ConcurrentLinkedQueue;
+
+import os.proj.p3.work.Job;
 
 /**
  * <p>

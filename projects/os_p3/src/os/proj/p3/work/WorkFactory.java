@@ -1,4 +1,4 @@
-package com.egurnee.school.os.p3;
+package os.proj.p3.work;
 
 /**
  * A factory class for generating JobWorkables to be placed in Jobs. You can

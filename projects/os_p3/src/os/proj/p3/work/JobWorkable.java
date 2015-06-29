@@ -1,4 +1,4 @@
-package com.egurnee.school.os.p3;
+package os.proj.p3.work;
 
 /**
  * Implementations of this interface are meant to simulate the work of a process

@@ -1,9 +1,14 @@
-package com.egurnee.school.os.p3;
+package os.proj.p3.io;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import os.proj.p3.core.FCFSScheduler;
+import os.proj.p3.core.SystemSimulator;
+import os.proj.p3.work.Submittor;
+import os.proj.p3.work.WorkFactory;
 
 /**
  * <p>Title: RunScheduler</p>
@@ -33,10 +38,11 @@ import java.util.Scanner;
 
 public class RunScheduler {
 
+	private final static String INPUT_FILE_LOCATION = "assets/";
 	private final static String INPUT_FILE_NAME = "scheduleInput.txt";
 
-	// private final static String INPUT_FILE_NAME = "assets/greek_input.txt";
-	// private final static String INPUT_FILE_NAME = "assets/titan_input.txt";
+	// private final static String INPUT_FILE_NAME = "greek_input.txt";
+	// private final static String INPUT_FILE_NAME = "titan_input.txt";
 
 	/**
 	 * Copies content of the input file into an array. Each line of input
@@ -45,10 +51,11 @@ public class RunScheduler {
 	public static void getJobsFromFile(ArrayList<String> listOfLines) {
 		Scanner fileIn = null; // (Initialization keeps compiler happy)
 		try { // open file
-			fileIn = new Scanner(new FileInputStream(INPUT_FILE_NAME));
+			fileIn = new Scanner(new FileInputStream(INPUT_FILE_LOCATION
+					+ INPUT_FILE_NAME));
 		} catch (FileNotFoundException e) {
 			System.out
-					.println("Input file " + INPUT_FILE_NAME + " not found. ");
+			.println("Input file " + INPUT_FILE_NAME + " not found. ");
 			System.exit(1);
 		}
 		while (fileIn.hasNextLine()) {

@@ -1,4 +1,4 @@
-package com.egurnee.school.os.p3;
+package os.proj.p3.io;
 
 import java.io.File;
 import java.io.FileInputStream;

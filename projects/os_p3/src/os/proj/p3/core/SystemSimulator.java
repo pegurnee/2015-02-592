@@ -1,6 +1,10 @@
-package com.egurnee.school.os.p3;
+package os.proj.p3.core;
 
 import java.util.concurrent.locks.ReentrantLock;
+
+import os.proj.p3.io.GanntChart;
+import os.proj.p3.work.Job;
+import os.proj.p3.work.JobWorkable;
 
 /**
  * <p>
@@ -20,7 +24,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * @version 2.0 extends Thread: this class simulates the kernel.
  */
 
-class SystemSimulator extends Thread {
+public class SystemSimulator extends Thread {
 	private static final int ILLEGAL_TERMINATION = -20;
 	// Used to store information to create a Gannt chart
 	private final GanntChart chart = new GanntChart();
@@ -55,7 +59,7 @@ class SystemSimulator extends Thread {
 			JobWorkable workToDo) {
 		Job newJob = new Job(burstDescription, this, name, workToDo);
 		System.out.println(Thread.currentThread()
-				+ " adding new process to ready queue.");
+							+ " adding new process to ready queue.");
 		this.myScheduler.add(newJob);
 	}
 
@@ -89,7 +93,7 @@ class SystemSimulator extends Thread {
 		 */
 		if (!terminatingJob.equals(schedulersRunning)) {
 			System.err.println("the world is broken, "
-					+ "also I didn't do everything correctly.");
+								+ "also I didn't do everything correctly.");
 			System.exit(ILLEGAL_TERMINATION);
 		}
 		// store job gannt data
@@ -106,7 +110,7 @@ class SystemSimulator extends Thread {
 	 * adds given job, j, to the ready set. Invoked by a Submittor. Keep in mind
 	 * that j might not start running immediately, depending on whether another
 	 * job is already running.
-	 *
+	 * 
 	 * EPG: obviously this is from a prior version of the code
 	 */
 

@@ -1,7 +1,9 @@
-package com.egurnee.school.os.p3;
+package os.proj.p3.work;
 
 import java.util.ArrayList;
 import java.util.StringTokenizer;
+
+import os.proj.p3.core.SystemSimulator;
 
 /**
  * <p>
@@ -23,7 +25,7 @@ import java.util.StringTokenizer;
  *          lower than the SystemSimulator.
  */
 
-class Submittor extends Thread {
+public class Submittor extends Thread {
 	private final ArrayList<String> myJobDescs; // list of job descriptions
 	// three items needed to create processes in the system
 	private final SystemSimulator mySystem; // operating system

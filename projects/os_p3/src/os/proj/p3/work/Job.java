@@ -1,6 +1,8 @@
-package com.egurnee.school.os.p3;
+package os.proj.p3.work;
 
 import java.util.concurrent.locks.Condition;
+
+import os.proj.p3.core.SystemSimulator;
 
 /**
  * <p>
@@ -27,7 +29,7 @@ import java.util.concurrent.locks.Condition;
  *          before returning (i.e., terminating).
  */
 
-class Job extends Thread {
+public class Job extends Thread {
 
 	private final int burstTime; // job burst time
 	private final Condition myCondition; // This is associated with the OS's
@@ -80,6 +82,22 @@ class Job extends Thread {
 	}
 
 	/*
+	 * return name of the job. Note that you can choose to use the inherited
+	 * Thread.getName, but if so, make sure you use the "name" argument
+	 * appropriately in the Job constructor, above.
+	 */
+	public synchronized String getNameOf() {
+		return (this.name);
+	}
+
+	/*
+	 * An accessor, returning the starting time of the job.
+	 */
+	public long getStartTime() {
+		return (this.startTime);
+	}
+
+	/*
 	 * Can do pretty much anything but must return after the CPU burst time has
 	 * elapsed. (Note that the Job's run-clock should not start "ticking" until
 	 * run() is invoked!
@@ -123,26 +141,10 @@ class Job extends Thread {
 	}
 
 	/*
-	 * An accessor, returning the starting time of the job.
-	 */
-	protected long getStartTime() {
-		return (this.startTime);
-	}
-
-	/*
 	 * returns false when the Job's burst time has been exhausted.
 	 */
 	synchronized protected boolean shouldRun() {
 		return (this.shouldRun);
-	}
-
-	/*
-	 * return name of the job. Note that you can choose to use the inherited
-	 * Thread.getName, but if so, make sure you use the "name" argument
-	 * appropriately in the Job constructor, above.
-	 */
-	synchronized String getNameOf() {
-		return (this.name);
 	}
 
 	/*
