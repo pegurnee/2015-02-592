@@ -1,7 +1,7 @@
-package com.egurnee.school.os.p1.workers;
+package os.proj.p1.workers;
 
-import com.egurnee.school.os.p1.WorkerType;
-import com.egurnee.school.os.p1.results.ResultItem;
+import os.proj.p1.WorkerType;
+import os.proj.p1.results.ResultItem;
 
 public class MinimumWorkerThread extends AbstractWorkerThread {
 
