@@ -1,4 +1,4 @@
-package com.egurnee.school.os.p2;
+package os.proj.p2.workers;
 
 public enum WorkerStatus {
 	FINISHED("Finished"), WAITING("Waiting"), WORKING("Working");

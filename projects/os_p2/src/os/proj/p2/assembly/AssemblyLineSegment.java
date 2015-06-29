@@ -1,4 +1,6 @@
-package com.egurnee.school.os.p2;
+package os.proj.p2.assembly;
+
+import os.proj.p2.Widget;
 
 public class AssemblyLineSegment {
 	private final static int BUFFER_SIZE = 3;

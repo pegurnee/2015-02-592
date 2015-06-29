@@ -1,4 +1,4 @@
-package com.egurnee.school.os.p2;
+package os.proj.p2;
 
 public class Widget {
 	private int numberTouched;

@@ -1,4 +1,7 @@
-package com.egurnee.school.os.p2;
+package os.proj.p2.workers;
+
+import os.proj.p2.Widget;
+import os.proj.p2.assembly.AssemblyLineSegment;
 
 public class WidgetWorker extends Thread {
 

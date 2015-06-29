@@ -1,9 +1,13 @@
-package com.egurnee.school.os.p2;
+package os.proj.p2.assembly;
+
+import os.proj.p2.workers.WidgetWorker;
+import os.proj.p2.workers.WorkerStatus;
 
 public class AssemblyLine {
 	private final static int DEFAULT_NUMBER_OF_WIDGETS = 24;
 	private final static int DEFAULT_NUMBER_OF_WORKERS = 4;
 
+	@SuppressWarnings("unused")
 	private final int numberOfWidgetsDesired;
 	private final AssemblyLineSegment[] segments;
 	private final WidgetWorker[] workers;

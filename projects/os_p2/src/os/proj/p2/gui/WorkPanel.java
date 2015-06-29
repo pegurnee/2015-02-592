@@ -1,15 +1,22 @@
-package com.egurnee.school.os.p2;
+package os.proj.p2.gui;
 
 import java.awt.Color;
 import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
+import os.proj.p2.workers.WorkerStatus;
+
 public class WorkPanel extends JPanel {
 
 	enum Type {
 		SEGMENT, WORKER
 	}
+
+	/**
+	 * default generated
+	 */
+	private static final long serialVersionUID = 8208023980204406203L;
 
 	private static final int WORKER_SIZE = 100;
 	private Color bgcolor;

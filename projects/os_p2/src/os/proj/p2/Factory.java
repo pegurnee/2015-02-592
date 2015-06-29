@@ -1,4 +1,4 @@
-package com.egurnee.school.os.p2;
+package os.proj.p2;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -8,10 +8,19 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import os.proj.p2.assembly.AssemblyLine;
+import os.proj.p2.gui.WorkPanel;
+import os.proj.p2.workers.WorkerStatus;
+
 public class Factory extends JFrame {
 
 	private static final int FACTORY_HEIGHT = 500;
 	private static final int FACTORY_WIDTH = 800;
+
+	/**
+	 * default generated
+	 */
+	private static final long serialVersionUID = 9172256208819417181L;
 
 	public static void main(String[] args) {
 		// new AssemblyLine().runAll();
