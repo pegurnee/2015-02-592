@@ -1,6 +1,10 @@
-package com.egurnee.school.os.p5;
+package os.proj.p5.pagers;
 
 import java.util.Iterator;
+
+import os.proj.p5.Frames;
+import os.proj.p5.io.PrintBuffer;
+import os.proj.p5.sequences.PageSeq;
 
 /*
  CLASS: Pager
@@ -63,13 +67,13 @@ import java.util.Iterator;
  */
 
 public abstract class AbstractPager extends Thread {
+	private PagingScheme theScheme;
 	protected int currentPage;
 	protected int myAccesses;
 	protected Frames myFrames;
-	protected PrintBuffer myHistory;
 
+	protected PrintBuffer myHistory;
 	protected int myNumFaults;
-	protected PagingScheme theScheme;
 	protected PageSeq theSequence;
 
 	public AbstractPager() {
@@ -90,7 +94,7 @@ public abstract class AbstractPager extends Thread {
 	}
 
 	public AbstractPager(PagingScheme theScheme) {
-		this.theScheme = theScheme;
+		this.setTheScheme(theScheme);
 		this.myNumFaults = 0;
 		this.myAccesses = 0;
 		this.myFrames = new Frames();
@@ -115,8 +119,12 @@ public abstract class AbstractPager extends Thread {
 		this.myHistory.fault(this.currentPage);
 	}
 
+	public PagingScheme getTheScheme() {
+		return this.theScheme;
+	}
+
 	public final String Name() {
-		return this.theScheme.toString();
+		return this.getTheScheme().toString();
 	}
 
 	public final int NumFaults() {
@@ -129,7 +137,7 @@ public abstract class AbstractPager extends Thread {
 	}
 
 	public final void PrintStats(int optimal) {
-		System.out.printf("%-8s %8s %8.2f%%%n", this.theScheme,
+		System.out.printf("%-8s %8s %8.2f%%%n", this.getTheScheme(),
 				this.NumFaults(), (this.NumFaults() / (double) optimal) * 100);
 	}
 
@@ -162,5 +170,9 @@ public abstract class AbstractPager extends Thread {
 	public final int SetNumFrames(int num) {
 		this.myFrames.SetNumFrames(num);
 		return this.myFrames.Size();
+	}
+
+	public void setTheScheme(PagingScheme theScheme) {
+		this.theScheme = theScheme;
 	}
 }

@@ -1,7 +1,10 @@
-package com.egurnee.school.os.p5;
+package os.proj.p5.pagers;
 
 import java.util.Iterator;
 import java.util.LinkedList;
+
+import os.proj.p5.io.PrintBuffer;
+import os.proj.p5.sequences.PageSeq;
 
 public class OptimalPager extends AbstractPager {
 	private LinkedList<Integer> theSequenceList;

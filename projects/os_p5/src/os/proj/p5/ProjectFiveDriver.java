@@ -1,6 +1,10 @@
-package com.egurnee.school.os.p5;
+package os.proj.p5;
 
 import java.util.ArrayList;
+
+import os.proj.p5.sequences.PageSeq;
+import os.proj.p5.sequences.PageSequenceFactory;
+import os.proj.p5.util.PagingManager;
 
 public class ProjectFiveDriver {
 	public static void main(String[] args) {

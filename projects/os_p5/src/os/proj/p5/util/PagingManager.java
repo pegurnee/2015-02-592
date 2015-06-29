@@ -1,6 +1,11 @@
-package com.egurnee.school.os.p5;
+package os.proj.p5.util;
 
 import java.util.ArrayList;
+
+import os.proj.p5.pagers.AbstractPager;
+import os.proj.p5.pagers.PagerFactory;
+import os.proj.p5.pagers.PagingScheme;
+import os.proj.p5.sequences.PageSeq;
 
 public class PagingManager {
 	private final AbstractPager[] pagers;
@@ -40,7 +45,7 @@ public class PagingManager {
 
 		int optimal = 0;
 		for (AbstractPager abstractPager : this.pagers) {
-			if (abstractPager.theScheme.equals(PagingScheme.OPTIMAL)) {
+			if (abstractPager.getTheScheme().equals(PagingScheme.OPTIMAL)) {
 				optimal = abstractPager.NumFaults();
 				break;
 			}

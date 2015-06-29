@@ -1,4 +1,5 @@
-package com.egurnee.school.os.p5;
+package os.proj.p5.pagers;
+
 
 public class FirstInFirstOutPager extends AbstractPager {
 	private int framePtr;

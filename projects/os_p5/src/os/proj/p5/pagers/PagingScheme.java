@@ -1,4 +1,4 @@
-package com.egurnee.school.os.p5;
+package os.proj.p5.pagers;
 
 public enum PagingScheme {
 	FIRST_IN_FIRST_OUT("FIFO"),

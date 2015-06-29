@@ -1,4 +1,4 @@
-package com.egurnee.school.os.p5;
+package os.proj.p5;
 
 public class Frames {
 
